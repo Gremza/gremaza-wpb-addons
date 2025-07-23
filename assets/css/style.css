@@ -1,0 +1,526 @@
+/**
+ * Gremaza WPB Addons - Hero Banner Styles
+ * Author: Marsel Preci
+ */
+
+/* Hero Banner Base Styles */
+.gremaza-hero-banner {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.gremaza-hero-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 40px;
+}
+
+.gremaza-hero-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.gremaza-hero-image-wrapper {
+    flex: 1;
+    text-align: center;
+}
+
+.gremaza-hero-video-wrapper {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.gremaza-hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gremaza-hero-video-container {
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gremaza-hero-video {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* Video Cover Styles */
+.gremaza-video-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.gremaza-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease !important;
+    animation: pulse 2s infinite;
+}
+
+.gremaza-play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    margin-left: 5px;
+}
+
+.gremaza-play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Play button animation */
+.gremaza-video-cover:hover .gremaza-play-button {
+    animation: none;
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* Ensure video iframe is hidden when cover image is present */
+.gremaza-hero-video-container .gremaza-hero-video[style*="display: none"],
+.gremaza-hero-video-container .gremaza-hero-video[style*="display:none"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Title Styles */
+.gremaza-hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Description Styles */
+.gremaza-hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0 0 30px 0;
+    color: #666;
+}
+
+.gremaza-hero-description p {
+    margin: 0 0 15px 0;
+}
+
+.gremaza-hero-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Button Styles */
+.gremaza-hero-button-wrapper {
+    margin-top: 30px;
+}
+
+.gremaza-hero-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #007cba;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.gremaza-hero-button:hover {
+    background-color: #005a87;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 124, 186, 0.3);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Style 1: Text Left, Image Right */
+.gremaza-hero-style1 .gremaza-hero-container {
+    flex-direction: row;
+}
+
+.gremaza-hero-style1 .gremaza-hero-content {
+    order: 1;
+    text-align: left;
+}
+
+.gremaza-hero-style1 .gremaza-hero-image-wrapper {
+    order: 2;
+}
+
+/* Style 2: Image Left, Text Right */
+.gremaza-hero-style2 .gremaza-hero-container {
+    flex-direction: row;
+}
+
+.gremaza-hero-style2 .gremaza-hero-content {
+    order: 2;
+    text-align: left;
+}
+
+.gremaza-hero-style2 .gremaza-hero-image-wrapper {
+    order: 1;
+}
+
+/* Full Column Cover Image Styles - Two Column Layout */
+.gremaza-hero-banner.gremaza-hero-cover-image {
+    padding: 0; /* Remove default padding for full coverage */
+    margin: 0; /* Remove margins */
+}
+
+/* Override WPBakery column padding when cover image is used */
+.wpb_column .gremaza-hero-banner.gremaza-hero-cover-image,
+.vc_column_container .gremaza-hero-banner.gremaza-hero-cover-image {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-container {
+    gap: 0;
+    min-height: 500px; /* Default fallback height */
+    height: auto;
+    max-width: none !important; /* Remove width constraint for full coverage */
+    margin: 0 !important; /* Remove auto margins */
+    padding: 0 !important; /* Remove padding */
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-content {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-image-wrapper {
+    flex: 1;
+    overflow: hidden;
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
+    display: flex;
+    align-items: stretch;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-image {
+    width: 100% !important;
+    height: 500px !important; /* Fixed height with dynamic override */
+    object-fit: cover !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-video-wrapper {
+    flex: 1;
+    overflow: hidden;
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
+    display: flex;
+    align-items: stretch;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-video-container {
+    width: 100% !important;
+    height: 500px !important; /* Fixed height with dynamic override */
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    position: relative !important;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-video {
+    border-radius: 0 !important;
+}
+
+.gremaza-hero-banner.gremaza-hero-cover-image .gremaza-video-cover {
+    border-radius: 0 !important;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .gremaza-hero-container {
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .gremaza-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .gremaza-hero-description {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile Styles - Both styles have same layout on mobile */
+@media (max-width: 768px) {
+    .gremaza-hero-banner {
+        padding: 40px 0;
+    }
+    
+    .gremaza-hero-container {
+        flex-direction: column !important;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    /* IMPORTANT: On mobile, both styles follow the same pattern: 
+       1. Image on top
+       2. Title below image
+       3. Description below title  
+       4. Button below description */
+    .gremaza-hero-style1 .gremaza-hero-content,
+    .gremaza-hero-style2 .gremaza-hero-content {
+        order: 2 !important;
+        text-align: center !important;
+    }
+    
+    .gremaza-hero-style1 .gremaza-hero-image-wrapper,
+    .gremaza-hero-style2 .gremaza-hero-image-wrapper {
+        order: 1 !important;
+    }
+    
+    .gremaza-hero-style1 .gremaza-hero-video-wrapper,
+    .gremaza-hero-style2 .gremaza-hero-video-wrapper {
+        order: 1 !important;
+    }
+    
+    /* Mobile video cover fixes */
+    .gremaza-hero-video-container .gremaza-hero-video[style*="display: none"] {
+        display: none !important;
+    }
+    
+    .gremaza-video-cover {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .gremaza-play-button {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .gremaza-play-button::before {
+        border-left: 15px solid white !important;
+        border-top: 12px solid transparent !important;
+        border-bottom: 12px solid transparent !important;
+    }
+    
+    .gremaza-hero-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .gremaza-hero-description {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    
+    .gremaza-hero-button-wrapper {
+        text-align: center;
+    }
+    
+    .gremaza-hero-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        display: inline-block;
+    }
+    
+    /* Cover image mobile styles - maintain mobile layout */
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-container {
+        flex-direction: column !important;
+        min-height: auto;
+    }
+    
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-content {
+        order: 2 !important;
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-image-wrapper {
+        order: 1 !important;
+       
+        flex: none;
+        position: relative;
+    }
+    
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-video-wrapper {
+        order: 1 !important;
+       
+        flex: none;
+        position: relative;
+    }
+    
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-video-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+    .gremaza-hero-banner {
+        padding: 30px 0;
+    }
+    .gremaza-hero-media-wrapper{
+        width: 100% ;
+    .gremaza-hero-container {
+        gap: 20px;
+        padding: 0 10px;
+        flex-direction: column !important;
+    }
+    
+    /* Ensure both styles maintain mobile order on small screens */
+    .gremaza-hero-style1 .gremaza-hero-content,
+    .gremaza-hero-style2 .gremaza-hero-content {
+        order: 2 !important;
+        text-align: center !important;
+    }
+    
+    .gremaza-hero-style1 .gremaza-hero-image-wrapper,
+    .gremaza-hero-style2 .gremaza-hero-image-wrapper {
+        order: 1 !important;
+    }
+    
+    .gremaza-hero-style1 .gremaza-hero-video-wrapper,
+    .gremaza-hero-style2 .gremaza-hero-video-wrapper {
+        order: 1 !important;
+    }
+    
+    /* Small mobile video cover fixes */
+    .gremaza-hero-video-container .gremaza-hero-video[style*="display: none"] {
+        display: none !important;
+    }
+    
+    .gremaza-video-cover {
+        display: flex !important;
+    }
+    
+    .gremaza-play-button {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .gremaza-play-button::before {
+        border-left: 12px solid white !important;
+        border-top: 10px solid transparent !important;
+        border-bottom: 10px solid transparent !important;
+    }
+    
+    .gremaza-hero-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .gremaza-hero-description {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+    
+    .gremaza-hero-button-wrapper {
+        text-align: center;
+    }
+    
+    .gremaza-hero-button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    /* Cover image small mobile styles */
+    .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-content {
+        padding: 25px 15px;
+    }
+    
+   
+}
+
+/* Additional utility classes */
+.gremaza-hero-banner.gremaza-no-padding {
+    padding: 0;
+}
+
+.gremaza-hero-banner.gremaza-large-padding {
+    padding: 100px 0;
+}
+
+.gremaza-hero-banner.gremaza-center-content .gremaza-hero-content {
+    text-align: center;
+}
+
+/* Animation classes for enhanced user experience */
+.gremaza-hero-banner.gremaza-fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+}

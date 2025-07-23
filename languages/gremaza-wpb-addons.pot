@@ -1,0 +1,145 @@
+# Gremaza WPB Addons - Language Template
+# Author: Marsel Preci
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Gremaza WPB Addons 1.0.0\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Gremaza WPB Addons requires WPBakery Page Builder to be installed and activated."
+msgstr ""
+
+msgid "Gremaza Elements"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "By Gremaza"
+msgstr ""
+
+msgid "Gremaza Settings"
+msgstr ""
+
+msgid "Hero Banner"
+msgstr ""
+
+msgid "Create attractive hero banners with title, description, button and image"
+msgstr ""
+
+msgid "Layout Style"
+msgstr ""
+
+msgid "Style 1: Text Left, Image Right"
+msgstr ""
+
+msgid "Style 2: Image Left, Text Right"
+msgstr ""
+
+msgid "Choose the layout style for desktop view"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Enter the hero banner title"
+msgstr ""
+
+msgid "Title HTML Tag"
+msgstr ""
+
+msgid "Select HTML tag for the title"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Enter the hero banner description"
+msgstr ""
+
+msgid "Button Text"
+msgstr ""
+
+msgid "Enter the call-to-action button text"
+msgstr ""
+
+msgid "Button Link"
+msgstr ""
+
+msgid "Add link to the button"
+msgstr ""
+
+msgid "Hero Image"
+msgstr ""
+
+msgid "Select hero banner image"
+msgstr ""
+
+msgid "Image Size"
+msgstr ""
+
+msgid "Large"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Full"
+msgstr ""
+
+msgid "Thumbnail"
+msgstr ""
+
+msgid "Select image size"
+msgstr ""
+
+msgid "Full Column Cover Image"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Make image cover the entire column without spacing"
+msgstr ""
+
+msgid "Design"
+msgstr ""
+
+msgid "Title Color"
+msgstr ""
+
+msgid "Title Font Size"
+msgstr ""
+
+msgid "Enter font size (e.g., 48px, 3rem, 2.5em)"
+msgstr ""
+
+msgid "Description Color"
+msgstr ""
+
+msgid "Description Font Size"
+msgstr ""
+
+msgid "Enter font size (e.g., 18px, 1.2rem, 1.1em)"
+msgstr ""
+
+msgid "Button Background Color"
+msgstr ""
+
+msgid "Button Text Color"
+msgstr ""
+
+msgid "Button Font Size"
+msgstr ""
+
+msgid "Enter font size (e.g., 16px, 1rem, 0.9em)"
+msgstr ""
+
+msgid "Extra CSS Class"
+msgstr ""
+
+msgid "Add extra CSS class for additional styling"
+msgstr ""

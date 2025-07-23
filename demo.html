@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gremaza Hero Banner - Video Cover Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        /* Include our hero banner styles */
+        .gremaza-hero-video-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .gremaza-video-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .gremaza-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .gremaza-play-button::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            margin-left: 5px;
+        }
+
+        .gremaza-video-cover:hover .gremaza-play-button {
+            animation: none;
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .gremaza-hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Ensure video iframe is hidden when cover image is present */
+        .gremaza-hero-video-container .gremaza-hero-video[style*="display: none"],
+        .gremaza-hero-video-container .gremaza-hero-video[style*="display:none"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎬 Gremaza Hero Banner - Video Cover Demo</h1>
+        
+        <div class="demo-section">
+            <div class="demo-title">✨ YouTube Video with Custom Cover Image</div>
+            <p>Click the play button to start the video. The cover image hides YouTube's interface for a cleaner look.</p>
+            
+            <div class="gremaza-hero-video-container">
+                <iframe 
+                    class="gremaza-hero-video" 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=0&loop=0&controls=1&showinfo=0&rel=0" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="display: none;">
+                </iframe>
+                <div class="gremaza-video-cover" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop');">
+                    <div class="gremaza-play-button"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <div class="demo-title">🎯 Features</div>
+            <ul>
+                <li><strong>Custom Cover Image:</strong> Hide YouTube's interface with your own cover image</li>
+                <li><strong>Animated Play Button:</strong> Eye-catching pulse animation and hover effects</li>
+                <li><strong>Smooth Transitions:</strong> Clean interaction when clicking to play</li>
+                <li><strong>Responsive Design:</strong> Works perfectly on all devices</li>
+                <li><strong>WPBakery Integration:</strong> Easy to use with the page builder</li>
+            </ul>
+        </div>
+        
+        <div class="demo-section">
+            <div class="demo-title">⚙️ How to Use in WPBakery</div>
+            <ol>
+                <li>Add the "Hero Banner by Gremaza" element to your page</li>
+                <li>Choose "YouTube Video" as the media type</li>
+                <li>Enter your YouTube video URL</li>
+                <li>Upload a cover image for the video</li>
+                <li>Customize other settings as needed</li>
+                <li>Save and enjoy your professional-looking video banner!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var covers = document.querySelectorAll(".gremaza-video-cover");
+            
+            covers.forEach(function(cover) {
+                function playVideo(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    var container = this.parentElement;
+                    var iframe = container.querySelector(".gremaza-hero-video");
+                    
+                    if (!iframe) return;
+                    
+                    var src = iframe.src;
+                    
+                    // Add autoplay parameter and show iframe
+                    if (src.indexOf('autoplay=0') !== -1) {
+                        iframe.src = src.replace("autoplay=0", "autoplay=1");
+                    } else if (src.indexOf('autoplay=1') === -1) {
+                        iframe.src = src + (src.indexOf('?') !== -1 ? '&' : '?') + "autoplay=1";
+                    }
+                    
+                    // Force display with important styles
+                    iframe.style.setProperty('display', 'block', 'important');
+                    iframe.style.setProperty('visibility', 'visible', 'important');
+                    iframe.style.setProperty('opacity', '1', 'important');
+                    
+                    // Hide cover
+                    this.style.setProperty('display', 'none', 'important');
+                    
+                    // Focus on iframe for better mobile experience
+                    setTimeout(function() {
+                        iframe.focus();
+                    }, 100);
+                }
+                
+                // Add both click and touch events for mobile compatibility
+                cover.addEventListener("click", playVideo);
+                cover.addEventListener("touchstart", playVideo);
+            });
+        });
+    </script>
+</body>
+</html>
