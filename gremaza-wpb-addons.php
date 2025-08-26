@@ -66,9 +66,12 @@ class GremazaWPBAddons {
         
         // Load hero banner element
         require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/hero-banner.php';
+    // Load reviews element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/reviews.php';
         
         // Initialize elements
         new GremazaHeroBanner();
+    new GremazaReviews();
     }
     
     public function enqueue_scripts() {
@@ -79,6 +82,15 @@ class GremazaWPBAddons {
             GREMAZA_WPB_PLUGIN_VERSION
         );
         
+        // Main frontend scripts (includes reviews slider)
+        wp_enqueue_script(
+            'gremaza-wpb-addons-script',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/script.js',
+            array('jquery'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
         wp_enqueue_script(
             'gremaza-wpb-addons-hero-banner',
             GREMAZA_WPB_PLUGIN_URL . 'assets/js/hero-banner.js',

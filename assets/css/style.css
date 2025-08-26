@@ -425,6 +425,7 @@
     }
     .gremaza-hero-media-wrapper{
         width: 100% ;
+    }
     .gremaza-hero-container {
         gap: 20px;
         padding: 0 10px;
@@ -491,13 +492,127 @@
     .gremaza-hero-banner.gremaza-hero-cover-image .gremaza-hero-content {
         padding: 25px 15px;
     }
-    
-   
+
 }
 
 /* Additional utility classes */
 .gremaza-hero-banner.gremaza-no-padding {
     padding: 0;
+}
+
+/* Reviews component */
+.gremaza-reviews {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.gremaza-reviews .gremaza-reviews-list {
+    display: flex;
+    gap: 20px;
+}
+
+.gremaza-reviews-horizontal .gremaza-reviews-list {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar UI while preserving scroll */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Hide WebKit scrollbars (Safari/Chrome) */
+.gremaza-reviews-horizontal .gremaza-reviews-list::-webkit-scrollbar {
+    display: none;
+}
+
+.gremaza-reviews-horizontal .gremaza-review-card {
+    /* Defaults for scroll; inline styles from shortcode may override widths */
+    min-width: 280px;
+    scroll-snap-align: start;
+}
+
+.gremaza-reviews-vertical .gremaza-reviews-list {
+    flex-direction: column;
+}
+
+.gremaza-review-card {
+    background: #fff;
+    border-left: 4px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 20px 20px 20px 24px;
+    position: relative;
+    display: flex;
+    gap: 12px;
+}
+
+.gremaza-review-quote {
+    font-size: 100px;
+    line-height: 1;
+    color: #F5D183;
+    font-family: Georgia, "Times New Roman", serif;
+    transform: translateY(-6px);
+}
+
+.gremaza-review-content {
+    flex: 1;
+}
+
+.gremaza-review-text {
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.gremaza-review-name {
+    font-weight: 700;
+    font-size: 20px;
+    font-style: normal;
+}
+
+.gremaza-review-position {
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Reviews slider pagination (horizontal) */
+.gremaza-reviews.gremaza-reviews-horizontal {
+    position: relative;
+}
+.gremaza-reviews.gremaza-reviews-horizontal .gremaza-reviews-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+.gremaza-reviews-pagination .gremaza-dot {
+    width: 8px;
+    height:12px;
+    border-radius: 50%;
+    border: none; 
+    cursor: pointer;
+}
+.gremaza-reviews-pagination .gremaza-dot[aria-selected="true"] {
+    background: #007cba;
+}
+.gremaza-reviews-pagination .gremaza-dot:focus {
+    outline: 2px solid #005a87;
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .gremaza-reviews .gremaza-reviews-list {
+        gap: 16px;
+    }
+    .gremaza-reviews-horizontal .gremaza-review-card {
+        min-width: 280px;
+    }
+    /* Remove outer padding on mobile */
+    .gremaza-reviews {
+        padding: 0;
+    }
 }
 
 .gremaza-hero-banner.gremaza-large-padding {
@@ -522,5 +637,4 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
 }
