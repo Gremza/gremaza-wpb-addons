@@ -24,7 +24,7 @@ class GremazaArticleBox {
             'name' => __('Article Box', 'gremaza-wpb-addons'),
             'base' => 'gremaza_article_box',
             'category' => __('By Gremaza', 'gremaza-wpb-addons'),
-            'description' => __('Article box with media on top, title, description, and button.'),
+            'description' => __('Article box with cover image on top, then title, description, and button.'),
             'icon' => 'icon-wpb-ui-separator',
             'show_settings_on_create' => true,
             'is_container' => false,
@@ -76,37 +76,11 @@ class GremazaArticleBox {
                     'description' => __('Add link to the button', 'gremaza-wpb-addons'),
                 ),
                 array(
-                    'type' => 'dropdown',
-                    'heading' => __('Media Type', 'gremaza-wpb-addons'),
-                    'param_name' => 'media_type',
-                    'value' => array(
-                        __('Image', 'gremaza-wpb-addons') => 'image',
-                        __('YouTube Video', 'gremaza-wpb-addons') => 'youtube',
-                    ),
-                    'std' => 'image',
-                    'description' => __('Choose between image or YouTube video', 'gremaza-wpb-addons'),
-                ),
-                array(
-                    'type' => 'textfield',
-                    'heading' => __('YouTube Video URL', 'gremaza-wpb-addons'),
-                    'param_name' => 'youtube_url',
-                    'value' => '',
-                    'description' => __('Enter YouTube video URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)', 'gremaza-wpb-addons'),
-                    'dependency' => array(
-                        'element' => 'media_type',
-                        'value' => 'youtube',
-                    ),
-                ),
-                array(
                     'type' => 'attach_image',
                     'heading' => __('Hero Image', 'gremaza-wpb-addons'),
                     'param_name' => 'hero_image',
                     'value' => '',
                     'description' => __('Select article image', 'gremaza-wpb-addons'),
-                    'dependency' => array(
-                        'element' => 'media_type',
-                        'value' => 'image',
-                    ),
                 ),
                 array(
                     'type' => 'dropdown',
@@ -120,10 +94,13 @@ class GremazaArticleBox {
                     ),
                     'std' => 'large',
                     'description' => __('Select image size', 'gremaza-wpb-addons'),
-                    'dependency' => array(
-                        'element' => 'media_type',
-                        'value' => 'image',
-                    ),
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Image Height', 'gremaza-wpb-addons'),
+                    'param_name' => 'cover_height',
+                    'value' => '360px',
+                    'description' => __('Height for the image (e.g., 360px, 50vh)', 'gremaza-wpb-addons'),
                 ),
                 // Design Tab (grouped)
                 array(
@@ -175,6 +152,71 @@ class GremazaArticleBox {
                     'group' => __('Design', 'gremaza-wpb-addons'),
                 ),
                 array(
+                    'type' => 'dropdown',
+                    'heading' => __('Text Align', 'gremaza-wpb-addons'),
+                    'param_name' => 'text_align',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'left',
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Button Align', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_align',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'center',
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Button Top Margin', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_margin_top',
+                    'value' => '30px',
+                    'description' => __('Space above the button (e.g., 30px)', 'gremaza-wpb-addons'),
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Button Border Radius', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_border_radius',
+                    'description' => __('e.g., 6px, 9999px', 'gremaza-wpb-addons'),
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Button Width', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_width',
+                    'description' => __('e.g., auto, 100%, 220px', 'gremaza-wpb-addons'),
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Button Padding', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_padding',
+                    'description' => __('e.g., 12px 24px', 'gremaza-wpb-addons'),
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'colorpicker',
+                    'heading' => __('Hover Background Color', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_hover_bg_color',
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'colorpicker',
+                    'heading' => __('Hover Text Color', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_hover_text_color',
+                    'group' => __('Design', 'gremaza-wpb-addons'),
+                ),
+                array(
                     'type' => 'textfield',
                     'heading' => __('Button Font Size', 'gremaza-wpb-addons'),
                     'param_name' => 'button_font_size',
@@ -201,15 +243,23 @@ class GremazaArticleBox {
             'button_text' => '',
             'button_link' => '',
             'media_type' => 'image',
-            'youtube_url' => '',
             'hero_image' => '',
             'image_size' => 'large',
+            'cover_height' => '360px',
             'title_color' => '',
             'title_font_size' => '32px',
             'description_color' => '',
             'description_font_size' => '16px',
             'button_bg_color' => '',
             'button_text_color' => '',
+            'text_align' => 'left',
+            'button_align' => 'center',
+            'button_margin_top' => '30px',
+            'button_border_radius' => '',
+            'button_width' => '',
+            'button_padding' => '',
+            'button_hover_bg_color' => '',
+            'button_hover_text_color' => '',
             'button_font_size' => '16px',
             'extra_class' => '',
             'box_bg_color' => '#ffffff',
@@ -250,6 +300,16 @@ class GremazaArticleBox {
         if (!empty($atts['button_font_size'])) {
             $button_styles[] = 'font-size: ' . esc_attr($atts['button_font_size']);
         }
+        if (!empty($atts['button_border_radius'])) {
+            $button_styles[] = 'border-radius: ' . esc_attr($atts['button_border_radius']);
+        }
+        if (!empty($atts['button_width'])) {
+            $button_styles[] = 'width: ' . esc_attr($atts['button_width']);
+            $button_styles[] = 'display: inline-flex';
+        }
+        if (!empty($atts['button_padding'])) {
+            $button_styles[] = 'padding: ' . esc_attr($atts['button_padding']);
+        }
         if (!empty($button_styles)) {
             $button_style = 'style="' . implode('; ', $button_styles) . ';"';
         }
@@ -263,30 +323,49 @@ class GremazaArticleBox {
         }
 
         $media_html = '';
-        if ($atts['media_type'] === 'youtube' && !empty($atts['youtube_url'])) {
-            $video_id = $this->extract_youtube_id($atts['youtube_url']);
-            if ($video_id) {
-                $media_html = '<div class="gremaza-article-media gremaza-article-video"><iframe src="https://www.youtube.com/embed/' . esc_attr($video_id) . '?autoplay=0&mute=0&loop=0&controls=1&showinfo=0&rel=0" style="width:100%;height:220px;border:none;" frameborder="0" allowfullscreen></iframe></div>';
-            }
-        } elseif ($atts['media_type'] === 'image' && !empty($atts['hero_image'])) {
-            $media_html = '<div class="gremaza-article-media gremaza-article-image">' . wp_get_attachment_image($atts['hero_image'], $atts['image_size'], false, array('class' => 'gremaza-article-img')) . '</div>';
+        if (!empty($atts['hero_image'])) {
+            // Sanitize height
+            $img_h = trim((string)$atts['cover_height']);
+            if (preg_match('/^\d+(?:\.\d+)?$/', $img_h)) { $img_h .= 'px'; }
+            if (!preg_match('/^\d+(?:\.\d+)?(px|vh|vw|em|rem|%)$/', $img_h)) { $img_h = '360px'; }
+            $img_tag = wp_get_attachment_image($atts['hero_image'], $atts['image_size'], false, array('class' => 'gremaza-article-cover-img'));
+            $media_html = '<div class="gremaza-article-media gremaza-article-cover" style="height:' . esc_attr($img_h) . ';">' . $img_tag . '</div>';
         }
 
-        $css_class = 'gremaza-article-box';
+    $css_class = 'gremaza-article-box';
         if (!empty($atts['extra_class'])) {
             $css_class .= ' ' . esc_attr($atts['extra_class']);
         }
 
-        $box_style = '';
+        // Build content styles (merge background + text align)
+        $content_styles = array();
         if (!empty($atts['box_bg_color'])) {
-            $box_style = ' style="background:' . esc_attr($atts['box_bg_color']) . ';"';
+            $content_styles[] = 'background:' . esc_attr($atts['box_bg_color']);
+        }
+        if (in_array($atts['text_align'], array('left','center','right'), true)) {
+            $content_styles[] = 'text-align:' . esc_attr($atts['text_align']);
+        }
+        $content_style_attr = !empty($content_styles) ? ' style="' . implode('; ', $content_styles) . ';"' : '';
+
+        // Unique class for per-instance hover styles
+        $unique_class = 'gza-article-' . wp_rand(1000, 999999);
+        $hover_css = '';
+        if (!empty($atts['button_hover_bg_color']) || !empty($atts['button_hover_text_color'])) {
+            $hover_css .= '.' . $unique_class . ' .gremaza-article-button:hover{';
+            if (!empty($atts['button_hover_bg_color'])) { $hover_css .= 'background-color:' . esc_attr($atts['button_hover_bg_color']) . ';'; }
+            if (!empty($atts['button_hover_text_color'])) { $hover_css .= 'color:' . esc_attr($atts['button_hover_text_color']) . ';'; }
+            $hover_css .= 'transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,0.15);}';
+        } else {
+            // Default subtle hover
+            $hover_css .= '.' . $unique_class . ' .gremaza-article-button:hover{transform: translateY(-2px);box-shadow: 0 6px 18px rgba(0,0,0,0.15);}';
         }
 
         ob_start();
         ?>
-        <div class="<?php echo esc_attr($css_class); ?>"<?php echo $box_style; ?>>
+        <div class="<?php echo esc_attr($css_class . ' ' . $unique_class); ?>">
+            <style type="text/css">.<?php echo $unique_class; ?> .gremaza-article-button{transition: background-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;}<?php echo $hover_css; ?></style>
             <?php echo $media_html; ?>
-            <div class="gremaza-article-content">
+            <div class="gremaza-article-content"<?php echo $content_style_attr; ?>>
                 <?php if (!empty($atts['title'])): ?>
                     <<?php echo esc_attr($atts['title_tag']); ?> class="gremaza-article-title" <?php echo $style_title; ?>>
                         <?php echo esc_html($atts['title']); ?>
@@ -298,7 +377,17 @@ class GremazaArticleBox {
                     </div>
                 <?php endif; ?>
                 <?php if (!empty($atts['button_text'])): ?>
-                    <div class="gremaza-article-button-wrapper">
+                    <?php
+                        // Button wrapper alignment and spacing
+                        $btn_mt = trim((string)$atts['button_margin_top']);
+                        if (preg_match('/^\d+(?:\.\d+)?$/', $btn_mt)) { $btn_mt .= 'px'; }
+                        $btn_mt = preg_match('/^\d+(?:\.\d+)?(px|em|rem|%)$/', $btn_mt) ? $btn_mt : '30px';
+                        $justify = 'center';
+                        if ($atts['button_align'] === 'left') { $justify = 'flex-start'; }
+                        elseif ($atts['button_align'] === 'right') { $justify = 'flex-end'; }
+                        $button_wrapper_style = 'display:flex;justify-content:' . $justify . ';margin-top:' . esc_attr($btn_mt) . ';width:100%;';
+                    ?>
+                    <div class="gremaza-article-button-wrapper" style="<?php echo esc_attr($button_wrapper_style); ?>">
                         <a href="<?php echo esc_url($button_url); ?>" target="<?php echo esc_attr($button_target); ?>" class="gremaza-article-button" <?php echo $button_style; ?>>
                             <?php echo esc_html($button_title); ?>
                         </a>

@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.0.0
+ * Version: 1.4.0
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.0.0');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.4.0');
 
 class GremazaWPBAddons {
     
@@ -64,14 +64,29 @@ class GremazaWPBAddons {
         
         $loaded = true;
         
-        // Load hero banner element
-        require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/hero-banner.php';
+    // Load hero banner element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/hero-banner.php';
     // Load reviews element
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/reviews.php';
+    // Load citation element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/citation.php';
+    // Load article box element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/article-box.php';
+    // Load read more overlay element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/read-more.php';
+    // Load image cover link element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/image-cover-link.php';
+    // Load separator element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/separator.php';
+    // Load animated divider element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/animated-divider.php';
         
-        // Initialize elements
-        new GremazaHeroBanner();
+    // Initialize elements
+    new GremazaHeroBanner();
     new GremazaReviews();
+    new GremazaCitation();
+    new GremazaReadMore();
+    new GremazaImageCoverLink();
     }
     
     public function enqueue_scripts() {

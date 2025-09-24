@@ -46,6 +46,7 @@ class GremazaAnimatedDivider {
                         __('Dotted Line', 'gremaza-wpb-addons') => 'dotted',
                         __('Curly Flourish', 'gremaza-wpb-addons') => 'curly',
                     ),
+                    'std' => 'swirl',
                     'description' => __('Choose decorative divider style', 'gremaza-wpb-addons'),
                 ),
                 array(
@@ -75,7 +76,7 @@ class GremazaAnimatedDivider {
 
     public function render_animated_divider($atts) {
         $atts = shortcode_atts(array(
-            'style' => 'wave',
+            'style' => 'swirl',
             'color' => '#0099ff',
             'height' => '40',
             'width' => '200',

@@ -638,3 +638,168 @@
         transform: translateY(0);
     }
 }
+
+/* Citation element */
+.gremaza-citation {
+    padding: 16px 20px;
+    border-left: 4px solid #F5D183;
+    border-radius: 6px;
+    background: #ffffff;
+}
+.gremaza-readmore-overlay {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height and margin-top are set inline from shortcode */
+}
+.gremaza-readmore-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #007cba;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.gremaza-readmore-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+.gremaza-readmore-overlay .gremaza-readmore-button:focus {
+    outline: 2px solid rgba(0,0,0,0.2);
+    outline-offset: 2px;
+}
+
+/* Make sure row/container does not clip the overlay fade when used after long text */
+.wpb_content_element .gremaza-readmore-overlay {
+    overflow: visible;
+}
+.gremaza-citation .gremaza-citation-text {
+    font-size: 18px;
+    line-height: 1.7; 
+    font-style: normal;
+}
+
+/* Article Box — cover layout */
+.gremaza-article-box {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+.gremaza-article-box .gremaza-article-media.gremaza-article-cover {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    clear: both;
+    line-height: 0; /* remove inline gap */
+    margin: 0;
+}
+.gremaza-article-box .gremaza-article-cover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important; /* override theme img {height:auto} */
+    max-width: 100% !important;
+    object-fit: cover;
+    display: block;
+    float: none !important;
+    transition: transform 0.6s ease;
+    will-change: transform;
+}
+
+.gremaza-article-box .gremaza-article-media.gremaza-article-cover:hover .gremaza-article-cover-img {
+    transform: scale(1.08);
+}
+.gremaza-article-box .gremaza-article-content {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Animated Divider — subtle draw-in animation */
+.gremaza-animated-divider svg path,
+.gremaza-animated-divider svg ellipse {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: gremaza-stroke-draw 1.2s ease forwards;
+}
+
+/* Slight staggering for nicer effect */
+.gremaza-animated-divider svg path:nth-child(2),
+.gremaza-animated-divider svg ellipse:nth-child(2n) {
+    animation-delay: 0.15s;
+}
+
+@keyframes gremaza-stroke-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Image Cover Link component */
+.gremaza-image-cover-link {
+    position: relative;
+    width: 100%;
+    height: var(--gremaza-height, 360px);
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.gremaza-image-cover-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--gremaza-bg, none);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1);
+    transition: transform 0.6s ease, filter 0.3s ease;
+    will-change: transform, filter;
+}
+
+.gremaza-image-cover-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0, var(--gremaza-overlay, 0.35));
+    transition: background 0.3s ease;
+}
+
+.gremaza-image-cover-link .gremaza-image-cover-link__anchor {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    outline: none;
+}
+
+.gremaza-image-cover-link .gremaza-image-cover-link__label {
+    display: inline-block;
+    text-align: center;
+}
+
+.gremaza-image-cover-link:hover::before {
+    transform: scale(var(--gremaza-zoom, 1.08));
+}
+
+.gremaza-image-cover-link:hover::after {
+    background: rgba(0,0,0, calc(var(--gremaza-overlay, 0.35) + 0.2));
+}
+
+/* Focus-visible for accessibility */
+.gremaza-image-cover-link .gremaza-image-cover-link__anchor:focus-visible .gremaza-image-cover-link__label {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.6);
+    border-radius: 6px;
+}
