@@ -104,52 +104,6 @@ class GremazaFullscreenSlideshow {
                     'group' => __('General', 'gremaza-wpb-addons'),
                 ),
                 
-                // Typography Settings
-                array(
-                    'type' => 'textfield',
-                    'heading' => __('Title Font Size', 'gremaza-wpb-addons'),
-                    'param_name' => 'title_font_size',
-                    'value' => '',
-                    'description' => __('Enter font size for titles (e.g., 3.5rem, 48px)', 'gremaza-wpb-addons'),
-                    'group' => __('Typography', 'gremaza-wpb-addons'),
-                ),
-                
-                array(
-                    'type' => 'colorpicker',
-                    'heading' => __('Title Color', 'gremaza-wpb-addons'),
-                    'param_name' => 'title_color',
-                    'value' => '#ffffff',
-                    'description' => __('Select color for titles', 'gremaza-wpb-addons'),
-                    'group' => __('Typography', 'gremaza-wpb-addons'),
-                ),
-                
-                array(
-                    'type' => 'textfield',
-                    'heading' => __('Description Font Size', 'gremaza-wpb-addons'),
-                    'param_name' => 'description_font_size',
-                    'value' => '',
-                    'description' => __('Enter font size for descriptions (e.g., 1.25rem, 20px)', 'gremaza-wpb-addons'),
-                    'group' => __('Typography', 'gremaza-wpb-addons'),
-                ),
-                
-                array(
-                    'type' => 'colorpicker',
-                    'heading' => __('Description Color', 'gremaza-wpb-addons'),
-                    'param_name' => 'description_color',
-                    'value' => '#ffffff',
-                    'description' => __('Select color for descriptions', 'gremaza-wpb-addons'),
-                    'group' => __('Typography', 'gremaza-wpb-addons'),
-                ),
-                
-                array(
-                    'type' => 'textfield',
-                    'heading' => __('Button Font Size', 'gremaza-wpb-addons'),
-                    'param_name' => 'button_font_size',
-                    'value' => '',
-                    'description' => __('Enter font size for buttons (e.g., 1.1rem, 18px)', 'gremaza-wpb-addons'),
-                    'group' => __('Typography', 'gremaza-wpb-addons'),
-                ),
-                
                 // Slide 1
                 array(
                     'type' => 'checkbox',
@@ -602,11 +556,6 @@ class GremazaFullscreenSlideshow {
             'autoplay_speed' => '5000',
             'show_arrows' => 'yes',
             'show_dots' => 'yes',
-            'title_font_size' => '',
-            'title_color' => '#ffffff',
-            'description_font_size' => '',
-            'description_color' => '#ffffff',
-            'button_font_size' => '',
             'extra_class' => '',
             // Slide 1
             'slide1_enable' => 'yes',
@@ -680,37 +629,6 @@ class GremazaFullscreenSlideshow {
             return '<div class="gremaza-slideshow-notice" style="padding: 20px; background: #f0f0f0; text-align: center;">Please enable at least one slide.</div>';
         }
         
-        // Build inline styles for typography
-        $title_style = '';
-        $title_styles = array();
-        if (!empty($atts['title_font_size'])) {
-            $title_styles[] = 'font-size: ' . esc_attr($atts['title_font_size']) . ' !important';
-        }
-        if (!empty($atts['title_color']) && $atts['title_color'] !== '#ffffff') {
-            $title_styles[] = 'color: ' . esc_attr($atts['title_color']) . ' !important';
-        }
-        if (!empty($title_styles)) {
-            $title_style = 'style="' . implode('; ', $title_styles) . ';"';
-        }
-        
-        $description_style = '';
-        $description_styles = array();
-        if (!empty($atts['description_font_size'])) {
-            $description_styles[] = 'font-size: ' . esc_attr($atts['description_font_size']) . ' !important';
-        }
-        if (!empty($atts['description_color']) && $atts['description_color'] !== '#ffffff') {
-            $description_styles[] = 'color: ' . esc_attr($atts['description_color']) . ' !important';
-        }
-        if (!empty($description_styles)) {
-            $description_style = 'style="' . implode('; ', $description_styles) . ';"';
-        }
-        
-        // Build button font size style
-        $button_font_style = '';
-        if (!empty($atts['button_font_size'])) {
-            $button_font_style = 'font-size: ' . esc_attr($atts['button_font_size']) . ' !important;';
-        }
-        
         // Start output buffering
         ob_start();
         ?>
@@ -741,28 +659,21 @@ class GremazaFullscreenSlideshow {
                         <div class="gremaza-slide-overlay"></div>
                         <div class="gremaza-slide-content">
                             <?php if (!empty($slide['title'])): ?>
-                                <h1 class="gremaza-slide-title" <?php echo $title_style; ?>><?php echo esc_html($slide['title']); ?></h1>
+                                <h1 class="gremaza-slide-title"><?php echo esc_html($slide['title']); ?></h1>
                             <?php endif; ?>
                             
                             <?php if (!empty($slide['description'])): ?>
-                                <div class="gremaza-slide-description" <?php echo $description_style; ?>>
+                                <div class="gremaza-slide-description">
                                     <?php echo wp_kses_post(wpautop($slide['description'])); ?>
                                 </div>
                             <?php endif; ?>
                             
                             <?php if (!empty($slide['button_text'])): ?>
                                 <div class="gremaza-slide-button-wrapper">
-                                    <?php
-                                    $button_styles = 'background-color: ' . esc_attr($slide['button_bg']) . ';';
-                                    if (!empty($atts['button_font_size'])) {
-                                        $button_styles .= ' font-size: ' . esc_attr($atts['button_font_size']) . ' !important;';
-                                    }
-                                    ?>
-                                    <!-- Debug: button_font_size = <?php echo esc_html($atts['button_font_size']); ?> -->
                                     <a href="<?php echo esc_url($button_url); ?>" 
                                        target="<?php echo esc_attr($button_target); ?>"
                                        class="gremaza-slide-button"
-                                       style="<?php echo $button_styles; ?>">
+                                       style="background-color: <?php echo esc_attr($slide['button_bg']); ?>;">
                                         <?php echo esc_html($slide['button_text']); ?>
                                     </a>
                                 </div>
