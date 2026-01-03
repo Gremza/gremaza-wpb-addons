@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.4.0
+ * Version: 1.7.0
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.4.0');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.7.0');
 
 class GremazaWPBAddons {
     
@@ -80,6 +80,14 @@ class GremazaWPBAddons {
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/separator.php';
     // Load animated divider element
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/animated-divider.php';
+    // Load fullscreen slideshow element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/fullscreen-slideshow.php';
+    // Load post carousel element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/post-carousel.php';
+    // Load image carousel element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/image-carousel.php';
+    // Load masonry show element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/masonry-show.php';
         
     // Initialize elements
     new GremazaHeroBanner();
@@ -87,6 +95,9 @@ class GremazaWPBAddons {
     new GremazaCitation();
     new GremazaReadMore();
     new GremazaImageCoverLink();
+    new GremazaFullscreenSlideshow();
+    new GremazaPostCarousel();
+    // Image carousel is initialized in its own file
     }
     
     public function enqueue_scripts() {
@@ -110,6 +121,30 @@ class GremazaWPBAddons {
             'gremaza-wpb-addons-hero-banner',
             GREMAZA_WPB_PLUGIN_URL . 'assets/js/hero-banner.js',
             array(),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        wp_enqueue_script(
+            'gremaza-wpb-addons-fullscreen-slideshow',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/fullscreen-slideshow.js',
+            array('jquery'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        wp_enqueue_script(
+            'gremaza-wpb-addons-post-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/post-carousel.js',
+            array('jquery'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        wp_enqueue_script(
+            'gremaza-wpb-addons-image-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/image-carousel.js',
+            array('jquery'),
             GREMAZA_WPB_PLUGIN_VERSION,
             true
         );
