@@ -1,7 +1,7 @@
 <?php
 /**
  * Image Card Element for WPBakery Page Builder
- * Background image with title, description, and full clickable area
+ * Image on top with title and description below, fully clickable
  */
 
 // Prevent direct access
@@ -33,7 +33,7 @@ class GremazaImageCard {
             'name' => __('Image Card', 'gremaza-wpb-addons'),
             'base' => 'gremaza_image_card',
             'category' => 'By Gremaza',
-            'description' => __('Image background with title, description and clickable link', 'gremaza-wpb-addons'),
+            'description' => __('Image on top with title and description below', 'gremaza-wpb-addons'),
             'icon' => 'icon-wpb-images-stack',
             'show_settings_on_create' => true,
             'is_container' => false,
@@ -42,7 +42,7 @@ class GremazaImageCard {
                 // Content
                 array(
                     'type' => 'attach_image',
-                    'heading' => __('Background Image', 'gremaza-wpb-addons'),
+                    'heading' => __('Image', 'gremaza-wpb-addons'),
                     'param_name' => 'image_id',
                     'admin_label' => true,
                 ),
@@ -67,32 +67,28 @@ class GremazaImageCard {
                 // Sizing
                 array(
                     'type' => 'textfield',
-                    'heading' => __('Height', 'gremaza-wpb-addons'),
+                    'heading' => __('Image Height', 'gremaza-wpb-addons'),
                     'param_name' => 'height',
-                    'description' => __('e.g. 400px, 50vh', 'gremaza-wpb-addons'),
+                    'description' => __('e.g. 300px, 250px', 'gremaza-wpb-addons'),
                     'group' => __('Design', 'gremaza-wpb-addons'),
                 ),
                 array(
                     'type' => 'dropdown',
-                    'heading' => __('Content Position', 'gremaza-wpb-addons'),
-                    'param_name' => 'content_position',
+                    'heading' => __('Text Alignment', 'gremaza-wpb-addons'),
+                    'param_name' => 'text_align',
                     'value' => array(
-                        __('Bottom Left', 'gremaza-wpb-addons') => 'bottom-left',
-                        __('Bottom Center', 'gremaza-wpb-addons') => 'bottom-center',
-                        __('Bottom Right', 'gremaza-wpb-addons') => 'bottom-right',
+                        __('Left', 'gremaza-wpb-addons') => 'left',
                         __('Center', 'gremaza-wpb-addons') => 'center',
-                        __('Top Left', 'gremaza-wpb-addons') => 'top-left',
-                        __('Top Center', 'gremaza-wpb-addons') => 'top-center',
-                        __('Top Right', 'gremaza-wpb-addons') => 'top-right',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
                     ),
-                    'std' => 'bottom-left',
+                    'std' => 'left',
                     'group' => __('Design', 'gremaza-wpb-addons'),
                 ),
                 array(
                     'type' => 'textfield',
                     'heading' => __('Content Padding', 'gremaza-wpb-addons'),
                     'param_name' => 'content_padding',
-                    'description' => __('e.g. 30px, 20px 30px', 'gremaza-wpb-addons'),
+                    'description' => __('e.g. 20px, 15px 0', 'gremaza-wpb-addons'),
                     'group' => __('Design', 'gremaza-wpb-addons'),
                 ),
 
@@ -101,14 +97,14 @@ class GremazaImageCard {
                     'type' => 'colorpicker',
                     'heading' => __('Title Color', 'gremaza-wpb-addons'),
                     'param_name' => 'title_color',
-                    'std' => '#ffffff',
+                    'std' => '#333333',
                     'group' => __('Title', 'gremaza-wpb-addons'),
                 ),
                 array(
                     'type' => 'textfield',
                     'heading' => __('Title Font Size', 'gremaza-wpb-addons'),
                     'param_name' => 'title_font_size',
-                    'description' => __('e.g. 28px, 2rem', 'gremaza-wpb-addons'),
+                    'description' => __('e.g. 24px, 1.5rem', 'gremaza-wpb-addons'),
                     'group' => __('Title', 'gremaza-wpb-addons'),
                 ),
                 array(
@@ -139,7 +135,7 @@ class GremazaImageCard {
                     'type' => 'colorpicker',
                     'heading' => __('Description Color', 'gremaza-wpb-addons'),
                     'param_name' => 'desc_color',
-                    'std' => '#ffffff',
+                    'std' => '#666666',
                     'group' => __('Description', 'gremaza-wpb-addons'),
                 ),
                 array(
@@ -173,14 +169,14 @@ class GremazaImageCard {
             'title' => '',
             'description' => '',
             'link' => '',
-            'height' => '400px',
-            'content_position' => 'bottom-left',
-            'content_padding' => '30px',
-            'title_color' => '#ffffff',
+            'height' => '300px',
+            'text_align' => 'left',
+            'content_padding' => '20px 0',
+            'title_color' => '#333333',
             'title_font_size' => '',
             'title_font_weight' => '',
             'title_font_family' => '',
-            'desc_color' => '#ffffff',
+            'desc_color' => '#666666',
             'desc_font_size' => '',
             'desc_font_family' => '',
             'extra_class' => '',
@@ -219,22 +215,25 @@ class GremazaImageCard {
         };
 
         $height = $sanitize_size($atts['height']);
-        if (!$height) { $height = '400px'; }
+        if (!$height) { $height = '300px'; }
 
         $content_padding = $sanitize_size($atts['content_padding']);
-        if (!$content_padding) { $content_padding = '30px'; }
+        if (!$content_padding) { $content_padding = '20px 0'; }
 
-        // Build wrapper styles
-        $wrapper_styles = array();
+        $text_align = in_array($atts['text_align'], array('left', 'center', 'right'), true) ? $atts['text_align'] : 'left';
+
+        // Build image styles
+        $img_styles = array();
+        $img_styles[] = 'height:' . esc_attr($height);
         if ($img_url) {
-            $wrapper_styles[] = '--gremaza-card-bg:url(' . esc_url($img_url) . ')';
+            $img_styles[] = 'background-image:url(' . esc_url($img_url) . ')';
         }
-        $wrapper_styles[] = '--gremaza-card-height:' . esc_attr($height);
-        $wrapper_style_attr = ' style="' . implode(';', $wrapper_styles) . '"';
+        $img_style_attr = ' style="' . implode(';', $img_styles) . '"';
 
         // Build content styles
         $content_styles = array();
         $content_styles[] = 'padding:' . esc_attr($content_padding);
+        $content_styles[] = 'text-align:' . esc_attr($text_align);
         $content_style_attr = ' style="' . implode(';', $content_styles) . '"';
 
         // Build title styles
@@ -268,7 +267,6 @@ class GremazaImageCard {
 
         // Build classes
         $classes = array('gremaza-image-card');
-        $classes[] = 'gremaza-image-card--' . sanitize_html_class($atts['content_position']);
         if (!empty($atts['extra_class'])) {
             foreach (preg_split('/\s+/', $atts['extra_class']) as $part) {
                 $san = sanitize_html_class($part);
@@ -279,10 +277,11 @@ class GremazaImageCard {
 
         ob_start();
         ?>
-        <div class="<?php echo $class_attr; ?>"<?php echo $wrapper_style_attr; ?>>
+        <div class="<?php echo $class_attr; ?>">
             <?php if ($href) : ?>
             <a class="gremaza-image-card__link" href="<?php echo $href; ?>"<?php echo $link_title ? ' title="' . $link_title . '"' : ''; ?><?php echo $target ? ' target="' . $target . '"' : ''; ?><?php echo $rel ? ' rel="' . $rel . '"' : ''; ?>>
             <?php endif; ?>
+                <div class="gremaza-image-card__image"<?php echo $img_style_attr; ?>></div>
                 <div class="gremaza-image-card__content"<?php echo $content_style_attr; ?>>
                     <?php if (!empty($atts['title'])) : ?>
                     <h2 class="gremaza-image-card__title"<?php echo $title_style_attr; ?>><?php echo esc_html($atts['title']); ?></h2>

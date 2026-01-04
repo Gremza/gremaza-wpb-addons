@@ -103,7 +103,34 @@ class GremazaFullscreenSlideshow {
                     'description' => __('Show dot indicators for slides', 'gremaza-wpb-addons'),
                     'group' => __('General', 'gremaza-wpb-addons'),
                 ),
-                
+
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Title Font Size', 'gremaza-wpb-addons'),
+                    'param_name' => 'title_font_size',
+                    'value' => '',
+                    'description' => __('Enter title font size (e.g., 3.5rem, 48px). Leave empty for default.', 'gremaza-wpb-addons'),
+                    'group' => __('General', 'gremaza-wpb-addons'),
+                ),
+
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Description Font Size', 'gremaza-wpb-addons'),
+                    'param_name' => 'description_font_size',
+                    'value' => '',
+                    'description' => __('Enter description font size (e.g., 1.25rem, 18px). Leave empty for default.', 'gremaza-wpb-addons'),
+                    'group' => __('General', 'gremaza-wpb-addons'),
+                ),
+
+                array(
+                    'type' => 'textfield',
+                    'heading' => __('Button Font Size', 'gremaza-wpb-addons'),
+                    'param_name' => 'button_font_size',
+                    'value' => '',
+                    'description' => __('Enter button font size (e.g., 1.1rem, 16px). Leave empty for default.', 'gremaza-wpb-addons'),
+                    'group' => __('General', 'gremaza-wpb-addons'),
+                ),
+
                 // Slide 1
                 array(
                     'type' => 'checkbox',
@@ -113,7 +140,25 @@ class GremazaFullscreenSlideshow {
                     'std' => 'yes',
                     'group' => __('Slide 1', 'gremaza-wpb-addons'),
                 ),
-                
+
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Content Alignment', 'gremaza-wpb-addons'),
+                    'param_name' => 'slide1_alignment',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'left',
+                    'description' => __('Align slide content (title, description, button)', 'gremaza-wpb-addons'),
+                    'group' => __('Slide 1', 'gremaza-wpb-addons'),
+                    'dependency' => array(
+                        'element' => 'slide1_enable',
+                        'not_empty' => true,
+                    ),
+                ),
+
                 array(
                     'type' => 'attach_image',
                     'heading' => __('Background Image', 'gremaza-wpb-addons'),
@@ -199,7 +244,25 @@ class GremazaFullscreenSlideshow {
                     'value' => array(__('Yes', 'gremaza-wpb-addons') => 'yes'),
                     'group' => __('Slide 2', 'gremaza-wpb-addons'),
                 ),
-                
+
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Content Alignment', 'gremaza-wpb-addons'),
+                    'param_name' => 'slide2_alignment',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'left',
+                    'description' => __('Align slide content (title, description, button)', 'gremaza-wpb-addons'),
+                    'group' => __('Slide 2', 'gremaza-wpb-addons'),
+                    'dependency' => array(
+                        'element' => 'slide2_enable',
+                        'not_empty' => true,
+                    ),
+                ),
+
                 array(
                     'type' => 'attach_image',
                     'heading' => __('Background Image', 'gremaza-wpb-addons'),
@@ -285,7 +348,25 @@ class GremazaFullscreenSlideshow {
                     'value' => array(__('Yes', 'gremaza-wpb-addons') => 'yes'),
                     'group' => __('Slide 3', 'gremaza-wpb-addons'),
                 ),
-                
+
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Content Alignment', 'gremaza-wpb-addons'),
+                    'param_name' => 'slide3_alignment',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'left',
+                    'description' => __('Align slide content (title, description, button)', 'gremaza-wpb-addons'),
+                    'group' => __('Slide 3', 'gremaza-wpb-addons'),
+                    'dependency' => array(
+                        'element' => 'slide3_enable',
+                        'not_empty' => true,
+                    ),
+                ),
+
                 array(
                     'type' => 'attach_image',
                     'heading' => __('Background Image', 'gremaza-wpb-addons'),
@@ -371,7 +452,25 @@ class GremazaFullscreenSlideshow {
                     'value' => array(__('Yes', 'gremaza-wpb-addons') => 'yes'),
                     'group' => __('Slide 4', 'gremaza-wpb-addons'),
                 ),
-                
+
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Content Alignment', 'gremaza-wpb-addons'),
+                    'param_name' => 'slide4_alignment',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'left',
+                    'description' => __('Align slide content (title, description, button)', 'gremaza-wpb-addons'),
+                    'group' => __('Slide 4', 'gremaza-wpb-addons'),
+                    'dependency' => array(
+                        'element' => 'slide4_enable',
+                        'not_empty' => true,
+                    ),
+                ),
+
                 array(
                     'type' => 'attach_image',
                     'heading' => __('Background Image', 'gremaza-wpb-addons'),
@@ -457,7 +556,25 @@ class GremazaFullscreenSlideshow {
                     'value' => array(__('Yes', 'gremaza-wpb-addons') => 'yes'),
                     'group' => __('Slide 5', 'gremaza-wpb-addons'),
                 ),
-                
+
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Content Alignment', 'gremaza-wpb-addons'),
+                    'param_name' => 'slide5_alignment',
+                    'value' => array(
+                        __('Left', 'gremaza-wpb-addons') => 'left',
+                        __('Center', 'gremaza-wpb-addons') => 'center',
+                        __('Right', 'gremaza-wpb-addons') => 'right',
+                    ),
+                    'std' => 'left',
+                    'description' => __('Align slide content (title, description, button)', 'gremaza-wpb-addons'),
+                    'group' => __('Slide 5', 'gremaza-wpb-addons'),
+                    'dependency' => array(
+                        'element' => 'slide5_enable',
+                        'not_empty' => true,
+                    ),
+                ),
+
                 array(
                     'type' => 'attach_image',
                     'heading' => __('Background Image', 'gremaza-wpb-addons'),
@@ -556,9 +673,13 @@ class GremazaFullscreenSlideshow {
             'autoplay_speed' => '5000',
             'show_arrows' => 'yes',
             'show_dots' => 'yes',
+            'title_font_size' => '',
+            'description_font_size' => '',
+            'button_font_size' => '',
             'extra_class' => '',
             // Slide 1
             'slide1_enable' => 'yes',
+            'slide1_alignment' => 'left',
             'slide1_image' => '',
             'slide1_title' => '',
             'slide1_description' => '',
@@ -567,6 +688,7 @@ class GremazaFullscreenSlideshow {
             'slide1_button_bg' => '#007bff',
             // Slide 2
             'slide2_enable' => '',
+            'slide2_alignment' => 'left',
             'slide2_image' => '',
             'slide2_title' => '',
             'slide2_description' => '',
@@ -575,6 +697,7 @@ class GremazaFullscreenSlideshow {
             'slide2_button_bg' => '#007bff',
             // Slide 3
             'slide3_enable' => '',
+            'slide3_alignment' => 'left',
             'slide3_image' => '',
             'slide3_title' => '',
             'slide3_description' => '',
@@ -583,6 +706,7 @@ class GremazaFullscreenSlideshow {
             'slide3_button_bg' => '#007bff',
             // Slide 4
             'slide4_enable' => '',
+            'slide4_alignment' => 'left',
             'slide4_image' => '',
             'slide4_title' => '',
             'slide4_description' => '',
@@ -591,6 +715,7 @@ class GremazaFullscreenSlideshow {
             'slide4_button_bg' => '#007bff',
             // Slide 5
             'slide5_enable' => '',
+            'slide5_alignment' => 'left',
             'slide5_image' => '',
             'slide5_title' => '',
             'slide5_description' => '',
@@ -620,6 +745,7 @@ class GremazaFullscreenSlideshow {
                     'button_text' => $atts["slide{$i}_button_text"],
                     'button_link' => $atts["slide{$i}_button_link"],
                     'button_bg' => $atts["slide{$i}_button_bg"],
+                    'alignment' => $atts["slide{$i}_alignment"],
                 );
             }
         }
@@ -657,23 +783,28 @@ class GremazaFullscreenSlideshow {
                     <div class="gremaza-slide <?php echo $index === 0 ? 'active' : ''; ?>"
                          style="background-image: url('<?php echo esc_url($image_url); ?>');">
                         <div class="gremaza-slide-overlay"></div>
-                        <div class="gremaza-slide-content">
+                        <div class="gremaza-slide-content gremaza-align-<?php echo esc_attr($slide['alignment']); ?>">
                             <?php if (!empty($slide['title'])): ?>
-                                <h1 class="gremaza-slide-title"><?php echo esc_html($slide['title']); ?></h1>
+                                <h1 class="gremaza-slide-title"<?php echo !empty($atts['title_font_size']) ? ' style="font-size: ' . esc_attr($atts['title_font_size']) . ';"' : ''; ?>><?php echo esc_html($slide['title']); ?></h1>
                             <?php endif; ?>
-                            
+
                             <?php if (!empty($slide['description'])): ?>
-                                <div class="gremaza-slide-description">
+                                <div class="gremaza-slide-description"<?php echo !empty($atts['description_font_size']) ? ' style="font-size: ' . esc_attr($atts['description_font_size']) . ';"' : ''; ?>>
                                     <?php echo wp_kses_post(wpautop($slide['description'])); ?>
                                 </div>
                             <?php endif; ?>
-                            
-                            <?php if (!empty($slide['button_text'])): ?>
+
+                            <?php if (!empty($slide['button_text'])):
+                                $button_style = 'background-color: ' . esc_attr($slide['button_bg']) . ';';
+                                if (!empty($atts['button_font_size'])) {
+                                    $button_style .= ' font-size: ' . esc_attr($atts['button_font_size']) . ';';
+                                }
+                            ?>
                                 <div class="gremaza-slide-button-wrapper">
-                                    <a href="<?php echo esc_url($button_url); ?>" 
+                                    <a href="<?php echo esc_url($button_url); ?>"
                                        target="<?php echo esc_attr($button_target); ?>"
                                        class="gremaza-slide-button"
-                                       style="background-color: <?php echo esc_attr($slide['button_bg']); ?>;">
+                                       style="<?php echo $button_style; ?>">
                                         <?php echo esc_html($slide['button_text']); ?>
                                     </a>
                                 </div>
