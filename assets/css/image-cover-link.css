@@ -1,0 +1,65 @@
+/**
+ * Gremaza WPB Addons - Image Cover Link Styles
+ * Author: Marsel Preci
+ */
+
+/* Image Cover Link component */
+.gremaza-image-cover-link {
+    position: relative;
+    width: 100%;
+    height: var(--gremaza-height, 360px);
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.gremaza-image-cover-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--gremaza-bg, none);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1);
+    transition: transform 0.6s ease, filter 0.3s ease;
+    will-change: transform, filter;
+}
+
+.gremaza-image-cover-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0, var(--gremaza-overlay, 0.35));
+    transition: background 0.3s ease;
+}
+
+.gremaza-image-cover-link .gremaza-image-cover-link__anchor {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    outline: none;
+}
+
+.gremaza-image-cover-link .gremaza-image-cover-link__label {
+    display: inline-block;
+    text-align: center;
+}
+
+.gremaza-image-cover-link:hover::before {
+    transform: scale(var(--gremaza-zoom, 1.08));
+}
+
+.gremaza-image-cover-link:hover::after {
+    background: rgba(0,0,0, calc(var(--gremaza-overlay, 0.35) + 0.2));
+}
+
+/* Focus-visible for accessibility */
+.gremaza-image-cover-link .gremaza-image-cover-link__anchor:focus-visible .gremaza-image-cover-link__label {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.6);
+    border-radius: 6px;
+}

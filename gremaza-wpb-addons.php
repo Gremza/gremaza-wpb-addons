@@ -108,13 +108,98 @@ class GremazaWPBAddons {
     }
     
     public function enqueue_scripts() {
+        // Element CSS files
         wp_enqueue_style(
-            'gremaza-wpb-addons-style',
-            GREMAZA_WPB_PLUGIN_URL . 'assets/css/style.css',
+            'gremaza-hero-banner',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/hero-banner.css',
             array(),
             GREMAZA_WPB_PLUGIN_VERSION
         );
-        
+
+        wp_enqueue_style(
+            'gremaza-reviews',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/reviews.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-citation',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/citation.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-read-more',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/read-more.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-article-box',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/article-box.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-animated-divider',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/animated-divider.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-image-cover-link',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/image-cover-link.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-fullscreen-slideshow',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/fullscreen-slideshow.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-image-card',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/image-card.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-contact-page',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/contact-page.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-post-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/post-carousel.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-image-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/image-carousel.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-masonry-show',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/masonry-show.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
         // Main frontend scripts (includes reviews slider)
         wp_enqueue_script(
             'gremaza-wpb-addons-script',

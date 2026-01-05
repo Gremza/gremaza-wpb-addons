@@ -1,0 +1,289 @@
+/**
+ * Gremaza WPB Addons - Post Carousel Styles
+ * Author: Marsel Preci
+ */
+
+/* ============================================
+   Post Carousel Styles
+   ============================================ */
+
+.gremaza-post-carousel {
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.gremaza-carousel-filters {
+    display: inline-flex;
+    gap: 0;
+    justify-content: center;
+    border: 1px solid #efefef;
+    border-radius: 25px;
+    background: transparent;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.gremaza-filter-btn {
+    padding: 15px 30px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #efefef;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gremaza-filter-btn:last-child {
+    border-right: none;
+}
+
+.gremaza-filter-btn:hover {
+    color: #0078d6;
+}
+
+.gremaza-filter-btn.active {
+    background: #333;
+    color: #fff;
+}
+
+.gremaza-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.gremaza-carousel-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.gremaza-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    justify-content: center;
+}
+
+.gremaza-carousel-track.has-many-items {
+    justify-content: flex-start;
+}
+
+.gremaza-carousel-item {
+    flex-shrink: 0;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.gremaza-carousel-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gremaza-carousel-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+}
+
+.gremaza-carousel-card:hover .gremaza-carousel-image {
+    transform: scale(1.1);
+}
+
+.gremaza-carousel-image-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gremaza-carousel-content {
+    padding: 25px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.gremaza-carousel-title {
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.gremaza-carousel-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gremaza-carousel-title a:hover {
+    color: #0078d6;
+}
+
+.gremaza-carousel-read-more {
+    color: #0078d6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.gremaza-carousel-read-more:hover {
+    color: #005fa3;
+}
+
+.gremaza-carousel-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.gremaza-carousel-card:hover .gremaza-carousel-buttons {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gremaza-carousel-btn {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.gremaza-carousel-btn-outline {
+    background: transparent;
+    border: 1px solid #333;
+    color: #333;
+}
+
+.gremaza-carousel-btn-outline:hover {
+    background: #333;
+    color: #fff;
+}
+
+.gremaza-carousel-btn-blue {
+    background: #0078d6;
+    border: 1px solid #0078d6;
+    color: #fff;
+}
+
+.gremaza-carousel-btn-blue:hover {
+    background: #005fa3;
+    border-color: #005fa3;
+}
+
+.gremaza-carousel-prev,
+.gremaza-carousel-next {
+    background: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.gremaza-carousel-prev.hidden,
+.gremaza-carousel-next.hidden {
+    display: none;
+}
+
+.gremaza-carousel-prev:hover,
+.gremaza-carousel-next:hover {
+    color: #0078d6;
+}
+
+.gremaza-carousel-prev:disabled,
+.gremaza-carousel-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.gremaza-carousel-prev svg,
+.gremaza-carousel-next svg {
+    width: 32px;
+    height: 32px;
+}
+
+.gremaza-carousel-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .gremaza-carousel-item {
+        padding: 0 10px;
+    }
+
+    .gremaza-carousel-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gremaza-carousel-wrapper {
+        gap: 10px;
+    }
+
+    .gremaza-carousel-prev,
+    .gremaza-carousel-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gremaza-carousel-prev svg,
+    .gremaza-carousel-next svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .gremaza-carousel-title {
+        font-size: 1.2rem;
+    }
+
+    .gremaza-carousel-content {
+        padding: 20px 15px;
+    }
+
+    .gremaza-carousel-buttons {
+        flex-direction: column;
+    }
+
+    .gremaza-filter-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}

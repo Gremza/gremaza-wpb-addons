@@ -1,0 +1,18 @@
+/**
+ * Gremaza WPB Addons - Citation Styles
+ * Author: Marsel Preci
+ */
+
+/* Citation element */
+.gremaza-citation {
+    padding: 16px 20px;
+    border-left: 4px solid #F5D183;
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+.gremaza-citation .gremaza-citation-text {
+    font-size: 18px;
+    line-height: 1.7;
+    font-style: normal;
+}

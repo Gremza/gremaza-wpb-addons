@@ -1,0 +1,259 @@
+/**
+ * Gremaza WPB Addons - Contact Page Styles
+ * Author: Marsel Preci
+ */
+
+/* ============================================
+   Contact Page Styles
+   ============================================ */
+
+/* Main Container */
+.gremaza-contact-page {
+    width: 100%;
+}
+
+/* Map Section */
+.gremaza-contact-map-section {
+    width: 100%;
+    position: relative;
+}
+
+.gremaza-contact-map {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    z-index: 1;
+}
+
+/* Leaflet map container overrides */
+.gremaza-contact-map .leaflet-container {
+    font-family: inherit;
+}
+
+/* Content Section (Info + Form) */
+.gremaza-contact-content-section {
+    padding: 60px 20px;
+}
+
+.gremaza-contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Left Column - Contact Info */
+.gremaza-contact-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.gremaza-contact-title {
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+}
+
+.gremaza-contact-details {
+    margin-bottom: 24px;
+}
+
+.gremaza-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.gremaza-contact-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.gremaza-contact-item a:hover {
+    opacity: 0.8;
+}
+
+.gremaza-contact-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.gremaza-contact-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.gremaza-contact-address span {
+
+}
+
+/* Social Media Icons */
+.gremaza-contact-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.gremaza-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gremaza-social-icon:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.gremaza-social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Right Column - Contact Form */
+.gremaza-contact-form-wrapper {
+    flex: 1;
+    min-width: 280px;
+}
+
+.gremaza-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gremaza-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.gremaza-form-field label {
+    font-weight: 600;
+    color: inherit;
+}
+
+.gremaza-form-field label .required {
+    color: #dc3545;
+}
+
+.gremaza-form-field input,
+.gremaza-form-field textarea {
+    padding: 12px 16px;
+    border: 1px solid #dddddd99;
+    border-radius: 6px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+    background: #ffffff99;
+}
+
+.gremaza-form-field input:focus,
+.gremaza-form-field textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.gremaza-form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Honeypot field - hidden from users */
+.gremaza-hp-field {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Submit Button */
+.gremaza-form-submit {
+    margin-top: 8px;
+}
+
+.gremaza-submit-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.gremaza-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gremaza-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Form Message */
+.gremaza-form-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+.gremaza-form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.gremaza-form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive Styles for Contact Page */
+@media (max-width: 768px) {
+    .gremaza-contact-content-section {
+        padding: 40px 15px;
+    }
+
+    .gremaza-contact-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .gremaza-contact-info,
+    .gremaza-contact-form-wrapper {
+        min-width: 100%;
+    }
+
+    .gremaza-contact-social {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .gremaza-contact-content-section {
+        padding: 30px 10px;
+    }
+
+    .gremaza-submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

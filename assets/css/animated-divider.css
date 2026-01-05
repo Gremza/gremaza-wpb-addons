@@ -1,0 +1,22 @@
+/**
+ * Gremaza WPB Addons - Animated Divider Styles
+ * Author: Marsel Preci
+ */
+
+/* Animated Divider — subtle draw-in animation */
+.gremaza-animated-divider svg path,
+.gremaza-animated-divider svg ellipse {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: gremaza-stroke-draw 1.2s ease forwards;
+}
+
+/* Slight staggering for nicer effect */
+.gremaza-animated-divider svg path:nth-child(2),
+.gremaza-animated-divider svg ellipse:nth-child(2n) {
+    animation-delay: 0.15s;
+}
+
+@keyframes gremaza-stroke-draw {
+    to { stroke-dashoffset: 0; }
+}
