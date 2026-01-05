@@ -1145,3 +1145,957 @@
         font-size: 13px;
     }
 }
+
+/* ============================================
+   Contact Page Styles
+   ============================================ */
+
+/* Main Container */
+.gremaza-contact-page {
+    width: 100%;
+}
+
+/* Map Section */
+.gremaza-contact-map-section {
+    width: 100%;
+    position: relative;
+}
+
+.gremaza-contact-map {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    z-index: 1;
+}
+
+/* Leaflet map container overrides */
+.gremaza-contact-map .leaflet-container {
+    font-family: inherit;
+}
+
+/* Content Section (Info + Form) */
+.gremaza-contact-content-section {
+    padding: 60px 20px;
+}
+
+.gremaza-contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Left Column - Contact Info */
+.gremaza-contact-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.gremaza-contact-title {
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+}
+
+.gremaza-contact-details {
+    margin-bottom: 24px;
+}
+
+.gremaza-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.gremaza-contact-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.gremaza-contact-item a:hover {
+    opacity: 0.8;
+}
+
+.gremaza-contact-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.gremaza-contact-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.gremaza-contact-address span {
+ 
+}
+
+/* Social Media Icons */
+.gremaza-contact-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.gremaza-social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gremaza-social-icon:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.gremaza-social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Right Column - Contact Form */
+.gremaza-contact-form-wrapper {
+    flex: 1;
+    min-width: 280px;
+}
+
+.gremaza-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gremaza-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.gremaza-form-field label {
+    font-weight: 600;
+    color: inherit;
+}
+
+.gremaza-form-field label .required {
+    color: #dc3545;
+}
+
+.gremaza-form-field input,
+.gremaza-form-field textarea {
+    padding: 12px 16px;
+    border: 1px solid #dddddd99;
+    border-radius: 6px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+    background: #ffffff99;
+}
+
+.gremaza-form-field input:focus,
+.gremaza-form-field textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.gremaza-form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Honeypot field - hidden from users */
+.gremaza-hp-field {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Submit Button */
+.gremaza-form-submit {
+    margin-top: 8px;
+}
+
+.gremaza-submit-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.gremaza-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gremaza-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Form Message */
+.gremaza-form-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+.gremaza-form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.gremaza-form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive Styles for Contact Page */
+@media (max-width: 768px) {
+    .gremaza-contact-content-section {
+        padding: 40px 15px;
+    }
+
+    .gremaza-contact-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .gremaza-contact-info,
+    .gremaza-contact-form-wrapper {
+        min-width: 100%;
+    }
+
+    .gremaza-contact-social {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .gremaza-contact-content-section {
+        padding: 30px 10px;
+    }
+
+    .gremaza-submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ============================================
+   Post Carousel Styles
+   ============================================ */
+
+.gremaza-post-carousel {
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.gremaza-carousel-filters {
+    display: inline-flex;
+    gap: 0;
+    justify-content: center;
+    border: 1px solid #efefef;
+    border-radius: 25px;
+    background: transparent;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.gremaza-filter-btn {
+    padding: 15px 30px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #efefef;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gremaza-filter-btn:last-child {
+    border-right: none;
+}
+
+.gremaza-filter-btn:hover {
+    color: #0078d6;
+}
+
+.gremaza-filter-btn.active {
+    background: #333;
+    color: #fff;
+}
+
+.gremaza-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.gremaza-carousel-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.gremaza-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    justify-content: center;
+}
+
+.gremaza-carousel-track.has-many-items {
+    justify-content: flex-start;
+}
+
+.gremaza-carousel-item {
+    flex-shrink: 0;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.gremaza-carousel-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gremaza-carousel-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+}
+
+.gremaza-carousel-card:hover .gremaza-carousel-image {
+    transform: scale(1.1);
+}
+
+.gremaza-carousel-image-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gremaza-carousel-content {
+    padding: 25px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.gremaza-carousel-title {
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.gremaza-carousel-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gremaza-carousel-title a:hover {
+    color: #0078d6;
+}
+
+.gremaza-carousel-read-more {
+    color: #0078d6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.gremaza-carousel-read-more:hover {
+    color: #005fa3;
+}
+
+.gremaza-carousel-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.gremaza-carousel-card:hover .gremaza-carousel-buttons {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gremaza-carousel-btn {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.gremaza-carousel-btn-outline {
+    background: transparent;
+    border: 1px solid #333;
+    color: #333;
+}
+
+.gremaza-carousel-btn-outline:hover {
+    background: #333;
+    color: #fff;
+}
+
+.gremaza-carousel-btn-blue {
+    background: #0078d6;
+    border: 1px solid #0078d6;
+    color: #fff;
+}
+
+.gremaza-carousel-btn-blue:hover {
+    background: #005fa3;
+    border-color: #005fa3;
+}
+
+.gremaza-carousel-prev,
+.gremaza-carousel-next {
+    background: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.gremaza-carousel-prev.hidden,
+.gremaza-carousel-next.hidden {
+    display: none;
+}
+
+.gremaza-carousel-prev:hover,
+.gremaza-carousel-next:hover {
+    color: #0078d6;
+}
+
+.gremaza-carousel-prev:disabled,
+.gremaza-carousel-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.gremaza-carousel-prev svg,
+.gremaza-carousel-next svg {
+    width: 32px;
+    height: 32px;
+}
+
+.gremaza-carousel-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .gremaza-carousel-item {
+        padding: 0 10px;
+    }
+
+    .gremaza-carousel-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gremaza-carousel-wrapper {
+        gap: 10px;
+    }
+
+    .gremaza-carousel-prev,
+    .gremaza-carousel-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gremaza-carousel-prev svg,
+    .gremaza-carousel-next svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .gremaza-carousel-title {
+        font-size: 1.2rem;
+    }
+
+    .gremaza-carousel-content {
+        padding: 20px 15px;
+    }
+
+    .gremaza-carousel-buttons {
+        flex-direction: column;
+    }
+
+    .gremaza-filter-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   Image Carousel Styles
+   ============================================ */
+
+.gremaza-image-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+}
+
+.gremaza-image-carousel-slides {
+    display: flex;
+    gap: 40px;
+    transition: transform 0.5s ease;
+}
+
+.gremaza-image-slide {
+    position: relative;
+    flex-shrink: 0;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.gremaza-image-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: inherit;
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
+
+.gremaza-image-slide:hover::before {
+    transform: scale(1.1);
+}
+
+.gremaza-image-slide-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    z-index: 1;
+}
+
+.gremaza-image-slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    max-width: 90%;
+    width: 100%;
+    padding: 20px;
+    transition: transform 0.4s ease;
+}
+
+.gremaza-image-slide:hover .gremaza-image-slide-content {
+    transform: translate(-50%, -40%);
+}
+
+.gremaza-image-slide-title {
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.gremaza-image-slide-description {
+    margin: 0 0 30px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.gremaza-image-slide-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #0078d6;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.gremaza-image-slide-button:hover {
+    background: #005fa3;
+    transform: translateY(-2px);
+}
+
+.gremaza-image-carousel-prev,
+.gremaza-image-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    z-index: 10;
+}
+
+.gremaza-image-carousel-prev.hidden,
+.gremaza-image-carousel-next.hidden {
+    display: none;
+}
+
+.gremaza-image-carousel-prev {
+    left: 20px;
+}
+
+.gremaza-image-carousel-next {
+    right: 20px;
+}
+
+.gremaza-image-carousel-prev:hover,
+.gremaza-image-carousel-next:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.gremaza-image-carousel-prev svg,
+.gremaza-image-carousel-next svg {
+    width: 24px;
+    height: 24px;
+}
+
+.gremaza-image-carousel-dots {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.gremaza-image-carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(51, 51, 51, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.gremaza-image-carousel-dot:hover {
+    background: rgba(51, 51, 51, 0.7);
+}
+
+.gremaza-image-carousel-dot.active {
+    background: #333;
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* Image Carousel Responsive Styles */
+@media (max-width: 768px) {
+    .gremaza-image-slide {
+        height: 350px;
+    }
+
+    .gremaza-image-slide-title {
+        font-size: 1.5rem;
+    }
+
+    .gremaza-image-slide-description {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .gremaza-image-slide-button {
+        padding: 10px 25px;
+        font-size: 13px;
+    }
+
+    .gremaza-image-carousel-prev,
+    .gremaza-image-carousel-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .gremaza-image-carousel-prev {
+        left: 10px;
+    }
+
+    .gremaza-image-carousel-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gremaza-image-slide {
+        height: 300px;
+    }
+
+    .gremaza-image-slide-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .gremaza-image-slide-description {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+}
+
+/* ============================================
+   Masonry Show Styles
+   ============================================ */
+
+.gremaza-masonry-show {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 350px 200px 350px;
+    gap: 20px;
+    margin: 0 0 30px 0;
+    padding: 0;
+}
+
+.gremaza-masonry-item {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Grid positioning for each item */
+/* Item 1: 50% width (cols 1-2), 550px height (rows 1-2) = 350 + 200 */
+.gremaza-masonry-item-1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+/* Item 2: 25% width (col 3), 550px height (rows 1-2) = 350 + 200 */
+.gremaza-masonry-item-2 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+
+/* Item 3: 25% width (col 4), 350px height (row 1 only) */
+.gremaza-masonry-item-3 {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+
+/* Item 4: 25% width (col 1), 350px height (row 3) */
+.gremaza-masonry-item-4 {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+/* Item 5: 25% width (col 2), 350px height (row 3) */
+.gremaza-masonry-item-5 {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+/* Item 6: 25% width (col 3), 350px height (row 3) */
+.gremaza-masonry-item-6 {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+}
+
+/* Item 7: 25% width (col 4), 550px height (rows 2-3) = 200 + 350 */
+.gremaza-masonry-item-7 {
+    grid-column: 4 / 5;
+    grid-row: 2 / 4;
+}
+
+.gremaza-masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.gremaza-masonry-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.gremaza-masonry-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+    transition: background 0.3s ease;
+}
+
+.gremaza-masonry-item:hover .gremaza-masonry-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.gremaza-masonry-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    z-index: 2;
+}
+
+.gremaza-masonry-title {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Masonry Responsive Styles */
+@media (max-width: 1024px) {
+    .gremaza-masonry-show {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .gremaza-masonry-item-1,
+    .gremaza-masonry-item-2,
+    .gremaza-masonry-item-3,
+    .gremaza-masonry-item-4,
+    .gremaza-masonry-item-5,
+    .gremaza-masonry-item-6,
+    .gremaza-masonry-item-7 {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        height: 400px !important;
+    }
+
+    .gremaza-masonry-title {
+        font-size: 20px;
+    }
+
+    .gremaza-masonry-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gremaza-masonry-show {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    .gremaza-masonry-item {
+        height: 350px !important;
+        border-radius: 15px;
+    }
+
+    .gremaza-masonry-title {
+        font-size: 18px;
+    }
+
+    .gremaza-masonry-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gremaza-masonry-show {
+        gap: 10px;
+    }
+
+    .gremaza-masonry-item {
+        height: 280px !important;
+        border-radius: 12px;
+    }
+
+    .gremaza-masonry-title {
+        font-size: 16px;
+    }
+
+    .gremaza-masonry-content {
+        padding: 15px;
+    }
+}

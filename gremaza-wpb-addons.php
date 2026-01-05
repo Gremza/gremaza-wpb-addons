@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.4.3
+ * Version: 1.8.1
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.4.3');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.8.0');
 
 class GremazaWPBAddons {
     
@@ -90,6 +90,8 @@ class GremazaWPBAddons {
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/post-carousel.php';
     // Load image carousel element
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/image-carousel.php';
+    // Load contact page element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/contact-page.php';
 
     // Initialize elements
     new GremazaHeroBanner();
@@ -102,6 +104,7 @@ class GremazaWPBAddons {
     new GremazaMasonryShow();
     new GremazaPostCarousel();
     new GremazaImageCarousel();
+    new GremazaContactPage();
     }
     
     public function enqueue_scripts() {
@@ -135,6 +138,59 @@ class GremazaWPBAddons {
             array('jquery'),
             GREMAZA_WPB_PLUGIN_VERSION,
             true
+        );
+
+        // Post carousel script
+        wp_enqueue_script(
+            'gremaza-wpb-addons-post-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/post-carousel.js',
+            array('jquery'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        // Image carousel script
+        wp_enqueue_script(
+            'gremaza-wpb-addons-image-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/image-carousel.js',
+            array('jquery'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        // Leaflet CSS (for contact page map)
+        wp_enqueue_style(
+            'leaflet',
+            'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
+            array(),
+            '1.9.4'
+        );
+
+        // Leaflet JS (for contact page map)
+        wp_enqueue_script(
+            'leaflet',
+            'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+            array(),
+            '1.9.4',
+            true
+        );
+
+        // Contact page script
+        wp_enqueue_script(
+            'gremaza-wpb-addons-contact-page',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/contact-page.js',
+            array('jquery', 'leaflet'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        // Localize script with AJAX URL for contact form
+        wp_localize_script(
+            'gremaza-wpb-addons-contact-page',
+            'gremazaContactAjax',
+            array(
+                'ajaxurl' => admin_url('admin-ajax.php'),
+            )
         );
     }
     
