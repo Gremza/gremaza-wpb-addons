@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.8.1
+ * Version: 1.8.8
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.8.0');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.8.8');
 
 class GremazaWPBAddons {
     
@@ -92,6 +92,8 @@ class GremazaWPBAddons {
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/image-carousel.php';
     // Load contact page element
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/contact-page.php';
+    // Load blog content element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/blog-content.php';
 
     // Initialize elements
     new GremazaHeroBanner();
@@ -105,6 +107,7 @@ class GremazaWPBAddons {
     new GremazaPostCarousel();
     new GremazaImageCarousel();
     new GremazaContactPage();
+    new GremazaBlogContent();
     }
     
     public function enqueue_scripts() {
@@ -196,6 +199,13 @@ class GremazaWPBAddons {
         wp_enqueue_style(
             'gremaza-masonry-show',
             GREMAZA_WPB_PLUGIN_URL . 'assets/css/masonry-show.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
+        wp_enqueue_style(
+            'gremaza-blog-content',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/blog-content.css',
             array(),
             GREMAZA_WPB_PLUGIN_VERSION
         );

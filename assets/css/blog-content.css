@@ -1,0 +1,165 @@
+/**
+ * Gremaza WPB Addons - Blog Content Styles
+ * Author: Marsel Preci
+ */
+
+/* Main wrapper */
+.gremaza-blog-content {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 40px 0;
+}
+
+/* Centered container */
+.blogcontair {
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Text content */
+.gremaza-blog-content__text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.gremaza-blog-content__text p {
+    margin-bottom: 1.5em;
+    line-height: 1.8;
+    width: 100%;
+}
+
+.gremaza-blog-content__text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Image base styles */
+.gremaza-blog-content__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Left positioned image - 50% inside, 50% outside left */
+.gremaza-blog-content__image--left {
+    width: 70%;
+    float: left;
+    position: relative;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+    margin-right: calc(-33%);
+    margin-top:10px;
+}
+
+.gremaza-blog-content__image--left img {
+    border-radius: 10px;
+}
+
+/* Right positioned image - 50% inside, 50% outside right */
+.gremaza-blog-content__image--right {
+    width: 70%;
+    float: right;
+    position: relative;
+    transform: translateX(50%);
+    margin-bottom: 15px;
+    margin-left: calc(-33%);
+    margin-top:10px;
+}
+
+.gremaza-blog-content__image--right img {
+    border-radius: 10px;
+}
+
+/* Full width background image - extends 20% beyond container */
+.gremaza-blog-content__image--full {
+    width: 140%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 1024px) {
+    .blogcontair {
+        padding: 0 30px;
+    }
+    
+    /* Reduce left/right image overlap on tablets */
+    .gremaza-blog-content__image--left {
+        transform: translateX(-30%);
+    }
+    
+    .gremaza-blog-content__image--right {
+        transform: translateX(30%);
+    }
+    
+    /* Reduce full width extension */
+    .gremaza-blog-content__image--full {
+        width: 120%;
+    }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+    .gremaza-blog-content {
+        padding: 30px 0;
+    }
+    
+    .blogcontair {
+        padding: 0 20px;
+    }
+    
+    /* Left and right images become full-width, no overflow */
+    .gremaza-blog-content__image--left,
+    .gremaza-blog-content__image--right {
+        width: 100%;
+        float: none;
+        transform: translateX(0);
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
+    
+    /* Full width images stay within container on mobile */
+    .gremaza-blog-content__image--full {
+        width: 100%;
+        left: 0;
+        transform: translateX(0);
+        margin-bottom: 15px;
+    }
+    
+    .gremaza-blog-content__text p {
+        font-size: 16px;
+    }
+}
+
+/* Responsive: Small mobile */
+@media (max-width: 480px) {
+    .gremaza-blog-content {
+        padding: 20px 0;
+    }
+    
+    .blogcontair {
+        padding: 0 15px;
+    }
+    
+    .gremaza-blog-content__image--left,
+    .gremaza-blog-content__image--right,
+    .gremaza-blog-content__image--full {
+        margin-bottom: 15px;
+    }
+    
+    .gremaza-blog-content__text p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
