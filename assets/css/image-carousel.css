@@ -186,6 +186,10 @@
 
 /* Image Carousel Responsive Styles */
 @media (max-width: 768px) {
+    .gremaza-image-carousel-slides {
+        gap: 20px;
+    }
+
     .gremaza-image-slide {
         height: 350px;
     }

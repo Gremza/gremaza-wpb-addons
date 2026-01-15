@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.8.8
+ * Version: 1.10.1
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.8.8');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.10.1');
 
 class GremazaWPBAddons {
     
@@ -94,6 +94,8 @@ class GremazaWPBAddons {
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/contact-page.php';
     // Load blog content element
     require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/blog-content.php';
+    // Load image card carousel element
+    require_once GREMAZA_WPB_PLUGIN_PATH . 'elements/image-card-carousel.php';
 
     // Initialize elements
     new GremazaHeroBanner();
@@ -108,6 +110,8 @@ class GremazaWPBAddons {
     new GremazaImageCarousel();
     new GremazaContactPage();
     new GremazaBlogContent();
+    new GremazaImageCardCarousel();
+    new GremazaImageCardCarouselItem();
     }
     
     public function enqueue_scripts() {
@@ -210,6 +214,13 @@ class GremazaWPBAddons {
             GREMAZA_WPB_PLUGIN_VERSION
         );
 
+        wp_enqueue_style(
+            'gremaza-image-card-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/css/image-card-carousel.css',
+            array(),
+            GREMAZA_WPB_PLUGIN_VERSION
+        );
+
         // Main frontend scripts (includes reviews slider)
         wp_enqueue_script(
             'gremaza-wpb-addons-script',
@@ -248,6 +259,15 @@ class GremazaWPBAddons {
         wp_enqueue_script(
             'gremaza-wpb-addons-image-carousel',
             GREMAZA_WPB_PLUGIN_URL . 'assets/js/image-carousel.js',
+            array('jquery'),
+            GREMAZA_WPB_PLUGIN_VERSION,
+            true
+        );
+
+        // Image card carousel script
+        wp_enqueue_script(
+            'gremaza-wpb-addons-image-card-carousel',
+            GREMAZA_WPB_PLUGIN_URL . 'assets/js/image-card-carousel.js',
             array('jquery'),
             GREMAZA_WPB_PLUGIN_VERSION,
             true

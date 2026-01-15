@@ -255,13 +255,35 @@
 
 @media (max-width: 768px) {
     .gremaza-carousel-wrapper {
-        gap: 10px;
+        position: relative;
+        gap: 0;
+    }
+
+    .gremaza-carousel-container {
+        width: 100%;
+    }
+
+    .gremaza-carousel-item {
+        padding: 0;
     }
 
     .gremaza-carousel-prev,
     .gremaza-carousel-next {
+        position: absolute;
+        top: 125px;
+        transform: translateY(-50%);
+        z-index: 10;
         width: 40px;
         height: 40px;
+        background: transparent;
+    }
+
+    .gremaza-carousel-prev {
+        left: 10px;
+    }
+
+    .gremaza-carousel-next {
+        right: 10px;
     }
 
     .gremaza-carousel-prev svg,
@@ -284,6 +306,6 @@
 
     .gremaza-filter-btn {
         padding: 8px 20px;
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }

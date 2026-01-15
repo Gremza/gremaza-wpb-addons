@@ -63,28 +63,38 @@
             } else {
                 this.itemsToShow = 4;
             }
-            
+
             // Calculate item width (subtract gap from container)
             const containerWidth = this.$element.width();
             const gapSize = 40; // Gap between items
-            const totalGaps = this.itemsToShow * gapSize;
-            this.itemWidth = (containerWidth - totalGaps) / this.itemsToShow;
-            
-            // Show 5th item partially (add 20% extra space)
-            if (this.itemsToShow === 4) {
-                this.itemWidth = (containerWidth - totalGaps) / 4.4;
+
+            // For single item (mobile), use full width with padding for centering
+            if (this.itemsToShow === 1) {
+                const mobilePadding = 0; // Equal padding on both sides
+                this.itemWidth = containerWidth - (mobilePadding * 2);
+                this.mobileOffset = mobilePadding; // Store offset for centering
+            } else {
+                this.mobileOffset = 0;
+                const totalGaps = (this.itemsToShow - 1) * gapSize; // Gaps are between items
+                this.itemWidth = (containerWidth - totalGaps) / this.itemsToShow;
+
+                // Show 5th item partially (add 20% extra space)
+                if (this.itemsToShow === 4) {
+                    this.itemWidth = (containerWidth - totalGaps) / 4.4;
+                }
             }
-            
+
             // Set slide widths and display
             this.$slides.css({
                 'width': this.itemWidth + 'px',
                 'display': 'inline-block'
             });
-            
+
             // Update track to flex layout
             this.$track.css({
                 'display': 'flex',
-                'transition': 'transform 0.5s ease'
+                'transition': 'transform 0.5s ease',
+                'justify-content': 'flex-start'
             });
         }
         
@@ -136,16 +146,18 @@
         updateCarousel() {
             // Calculate max index
             const maxIndex = Math.max(0, this.totalSlides - this.itemsToShow);
-            
+
             // Constrain current index
             if (this.currentIndex > maxIndex) {
                 this.currentIndex = maxIndex;
             }
-            
+
             // Calculate offset (including gap)
-            const gapSize = 40;
-            const offset = -this.currentIndex * (this.itemWidth + gapSize);
-            
+            const gapSize = this.itemsToShow === 1 ? 20 : 40;
+            const slideOffset = -this.currentIndex * (this.itemWidth + gapSize);
+            const centerOffset = this.mobileOffset || 0;
+            const offset = slideOffset + centerOffset;
+
             // Update track position
             this.$track.css('transform', 'translateX(' + offset + 'px)');
             
