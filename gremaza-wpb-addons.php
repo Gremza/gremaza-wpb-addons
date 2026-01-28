@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.10.1
+ * Version: 1.10.3
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,25 +19,35 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.10.1');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.10.3');
 
 class GremazaWPBAddons {
-    
+
     public function __construct() {
         add_action('init', array($this, 'init'));
+
+        // Load widgets (always load, regardless of WPBakery)
+        $this->load_widgets();
     }
-    
+
     public function init() {
         // Check and show notice if WPBakery is not active
         add_action('admin_notices', array($this, 'wpbakery_missing_notice'));
-        
+
         // Initialize the plugin with multiple hooks to ensure it works
         add_action('vc_before_init', array($this, 'load_elements'));
         add_action('init', array($this, 'load_elements'), 20);
         add_action('wp_loaded', array($this, 'load_elements'));
-        
+
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
         add_action('init', array($this, 'load_textdomain'), 20);
+    }
+
+    /**
+     * Load WordPress widgets
+     */
+    public function load_widgets() {
+        require_once GREMAZA_WPB_PLUGIN_PATH . 'widgets/contact-widget.php';
     }
     
     public function wpbakery_missing_notice() {
