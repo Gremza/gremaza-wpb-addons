@@ -37,9 +37,20 @@ class GremazaImageCarousel {
             'icon' => 'icon-wpb-images-carousel',
             'as_parent' => array('only' => 'gremaza_image_carousel_slide'),
             'content_element' => true,
-            'show_settings_on_create' => false,
+            'show_settings_on_create' => true,
             'js_view' => 'VcColumnView',
             'params' => array(
+                array(
+                    'type' => 'dropdown',
+                    'heading' => __('Carousel Style', 'gremaza-wpb-addons'),
+                    'param_name' => 'carousel_style',
+                    'value' => array(
+                        __('Card Carousel Style', 'gremaza-wpb-addons') => 'card',
+                        __('Logo Carousel Style', 'gremaza-wpb-addons') => 'logo',
+                    ),
+                    'std' => 'card',
+                    'description' => __('Card style shows title, description and hover effects. Logo style shows only images with links.', 'gremaza-wpb-addons'),
+                ),
                 array(
                     'type' => 'dropdown',
                     'heading' => __('Autoplay', 'gremaza-wpb-addons'),
@@ -85,18 +96,26 @@ class GremazaImageCarousel {
     }
     
     public function render_shortcode($atts, $content = null) {
+        global $gremaza_carousel_style;
+
         $atts = shortcode_atts(array(
+            'carousel_style' => 'card',
             'autoplay' => 'yes',
             'autoplay_speed' => '5000',
             'show_arrows' => 'yes',
             'show_dots' => 'yes',
         ), $atts);
-        
+
+        // Store style globally for child slides to access
+        $gremaza_carousel_style = $atts['carousel_style'];
+
         $carousel_id = 'gremaza-image-carousel-' . uniqid();
-        
-        $output = '<div class="gremaza-image-carousel" id="' . esc_attr($carousel_id) . '" 
+        $style_class = $atts['carousel_style'] === 'logo' ? ' gremaza-logo-carousel' : ' gremaza-card-carousel';
+
+        $output = '<div class="gremaza-image-carousel' . $style_class . '" id="' . esc_attr($carousel_id) . '"
                         data-autoplay="' . esc_attr($atts['autoplay']) . '"
-                        data-autoplay-speed="' . esc_attr($atts['autoplay_speed']) . '">';
+                        data-autoplay-speed="' . esc_attr($atts['autoplay_speed']) . '"
+                        data-style="' . esc_attr($atts['carousel_style']) . '">';
         
         $output .= '<div class="gremaza-image-carousel-slides">';
         $output .= do_shortcode($content);
@@ -199,8 +218,9 @@ class GremazaImageCarouselSlide {
     }
     
     public function render_shortcode($atts) {
+        global $gremaza_carousel_style;
         static $slide_index = 0;
-        
+
         $atts = shortcode_atts(array(
             'image' => '',
             'title' => '',
@@ -208,13 +228,14 @@ class GremazaImageCarouselSlide {
             'button_text' => '',
             'button_link' => '',
         ), $atts);
-        
+
         if (empty($atts['image'])) {
             return '';
         }
-        
+
         $image_url = wp_get_attachment_image_url($atts['image'], 'full');
-        
+        $carousel_style = isset($gremaza_carousel_style) ? $gremaza_carousel_style : 'card';
+
         $button_link = '';
         $button_target = '_self';
         if (!empty($atts['button_link'])) {
@@ -222,31 +243,51 @@ class GremazaImageCarouselSlide {
             $button_link = $link['url'];
             $button_target = !empty($link['target']) ? $link['target'] : '_self';
         }
-        
+
         $active_class = $slide_index === 0 ? ' active' : '';
         $slide_index++;
-        
-        $output = '<div class="gremaza-image-slide' . $active_class . '" 
+
+        // Logo style: simple image with link, no overlay/content
+        if ($carousel_style === 'logo') {
+            $output = '<div class="gremaza-image-slide gremaza-logo-slide' . $active_class . '">';
+
+            if (!empty($button_link)) {
+                $output .= '<a href="' . esc_url($button_link) . '" target="' . esc_attr($button_target) . '" class="gremaza-logo-slide-link">';
+            }
+
+            $output .= '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($atts['title']) . '" class="gremaza-logo-slide-image">';
+
+            if (!empty($button_link)) {
+                $output .= '</a>';
+            }
+
+            $output .= '</div>';
+
+            return $output;
+        }
+
+        // Card style: full content with overlay
+        $output = '<div class="gremaza-image-slide' . $active_class . '"
                          style="background-image: url(\'' . esc_url($image_url) . '\');">
                         <div class="gremaza-image-slide-overlay"></div>
                         <div class="gremaza-image-slide-content">';
-        
+
         if (!empty($atts['title'])) {
             $output .= '<h2 class="gremaza-image-slide-title">' . esc_html($atts['title']) . '</h2>';
         }
-        
+
         if (!empty($atts['description'])) {
             $output .= '<p class="gremaza-image-slide-description">' . esc_html($atts['description']) . '</p>';
         }
-        
+
         if (!empty($atts['button_text']) && !empty($button_link)) {
-            $output .= '<a href="' . esc_url($button_link) . '" 
+            $output .= '<a href="' . esc_url($button_link) . '"
                            target="' . esc_attr($button_target) . '"
                            class="gremaza-image-slide-button">' . esc_html($atts['button_text']) . '</a>';
         }
-        
+
         $output .= '</div></div>';
-        
+
         return $output;
     }
 }

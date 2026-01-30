@@ -238,3 +238,52 @@
         margin-bottom: 15px;
     }
 }
+
+/* ============================================
+   Logo Carousel Style
+   ============================================ */
+
+.gremaza-logo-carousel {
+    padding: 20px 0;
+}
+
+.gremaza-logo-carousel .gremaza-image-carousel-slides {
+    align-items: center;
+}
+
+.gremaza-logo-slide {
+    background: none !important;
+    background-image: none !important;
+    border-radius: 0;
+    height: auto;
+    box-shadow: none;
+}
+
+.gremaza-logo-slide::before {
+    display: none;
+}
+
+.gremaza-logo-slide-link {
+    display: block;
+    text-decoration: none;
+}
+
+.gremaza-logo-slide-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Logo Carousel Responsive */
+@media (max-width: 768px) {
+    .gremaza-logo-carousel {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .gremaza-logo-carousel {
+        padding: 10px 0;
+    }
+}

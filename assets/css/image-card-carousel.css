@@ -247,3 +247,37 @@
         -webkit-line-clamp: 2;
     }
 }
+
+/* ============================================
+   Logo Carousel Style
+   ============================================ */
+
+.gremaza-logo-carousel-style .gremaza-logo-item {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    height: auto;
+}
+
+.gremaza-logo-carousel-style .gremaza-logo-item:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.gremaza-logo-carousel-style .gremaza-logo-item .gremaza-card-image-wrap {
+    height: auto;
+}
+
+.gremaza-logo-carousel-style .gremaza-logo-item .gremaza-card-image-wrap img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.gremaza-logo-carousel-style .gremaza-logo-item:hover .gremaza-card-image-wrap img {
+    transform: none;
+}
+
+.gremaza-logo-carousel-style .gremaza-card-link {
+    display: block;
+}

@@ -43,6 +43,17 @@ class GremazaImageCardCarousel {
             'params' => array(
                 array(
                     'type' => 'dropdown',
+                    'heading' => __('Carousel Style', 'gremaza-wpb-addons'),
+                    'param_name' => 'carousel_style',
+                    'value' => array(
+                        __('Card Carousel Style', 'gremaza-wpb-addons') => 'card',
+                        __('Logo Carousel Style', 'gremaza-wpb-addons') => 'logo',
+                    ),
+                    'std' => 'card',
+                    'description' => __('Card style shows title, description and hover effects. Logo style shows only images with links.', 'gremaza-wpb-addons'),
+                ),
+                array(
+                    'type' => 'dropdown',
                     'heading' => __('Autoplay', 'gremaza-wpb-addons'),
                     'param_name' => 'autoplay',
                     'value' => array(
@@ -79,6 +90,10 @@ class GremazaImageCardCarousel {
                     'heading' => __('Items to Show (Desktop)', 'gremaza-wpb-addons'),
                     'param_name' => 'items_desktop',
                     'value' => array(
+                        '8' => '8',
+                        '7' => '7',
+                        '6' => '6',
+                        '5' => '5',
                         '4' => '4',
                         '3' => '3',
                         '2' => '2',
@@ -129,7 +144,10 @@ class GremazaImageCardCarousel {
     }
 
     public function render_shortcode($atts, $content = null) {
+        global $gremaza_card_carousel_style;
+
         $atts = shortcode_atts(array(
+            'carousel_style' => 'card',
             'autoplay' => 'no',
             'autoplay_speed' => '5000',
             'show_arrows' => 'yes',
@@ -140,9 +158,13 @@ class GremazaImageCardCarousel {
             'gap' => '20',
         ), $atts);
 
-        $carousel_id = 'gremaza-card-carousel-' . uniqid();
+        // Store style globally for child items to access
+        $gremaza_card_carousel_style = $atts['carousel_style'];
 
-        $output = '<div class="gremaza-card-carousel-wrapper">';
+        $carousel_id = 'gremaza-card-carousel-' . uniqid();
+        $style_class = $atts['carousel_style'] === 'logo' ? ' gremaza-logo-carousel-style' : ' gremaza-card-carousel-style';
+
+        $output = '<div class="gremaza-card-carousel-wrapper' . $style_class . '">';
         $output .= '<div class="gremaza-card-carousel" id="' . esc_attr($carousel_id) . '"
                         data-autoplay="' . esc_attr($atts['autoplay']) . '"
                         data-autoplay-speed="' . esc_attr($atts['autoplay_speed']) . '"
@@ -150,6 +172,7 @@ class GremazaImageCardCarousel {
                         data-items-tablet="' . esc_attr($atts['items_tablet']) . '"
                         data-items-mobile="' . esc_attr($atts['items_mobile']) . '"
                         data-gap="' . esc_attr($atts['gap']) . '"
+                        data-style="' . esc_attr($atts['carousel_style']) . '"
                         style="--card-height: ' . esc_attr($atts['card_height']) . 'px; --card-gap: ' . esc_attr($atts['gap']) . 'px;">';
 
         // Count items
@@ -240,6 +263,7 @@ class GremazaImageCardCarouselItem {
     }
 
     public function render_shortcode($atts) {
+        global $gremaza_card_carousel_style;
         static $item_index = 0;
 
         $atts = shortcode_atts(array(
@@ -248,6 +272,8 @@ class GremazaImageCardCarouselItem {
             'description' => '',
             'link' => '',
         ), $atts);
+
+        $carousel_style = isset($gremaza_card_carousel_style) ? $gremaza_card_carousel_style : 'card';
 
         $image_url = '';
         if (!empty($atts['image'])) {
@@ -265,7 +291,8 @@ class GremazaImageCardCarouselItem {
             $link_target = !empty($link['target']) ? $link['target'] : '_self';
         }
 
-        $output = '<div class="gremaza-card-item" data-index="' . esc_attr($item_index) . '">';
+        $item_class = $carousel_style === 'logo' ? 'gremaza-card-item gremaza-logo-item' : 'gremaza-card-item';
+        $output = '<div class="' . esc_attr($item_class) . '" data-index="' . esc_attr($item_index) . '">';
 
         if (!empty($link_url)) {
             $output .= '<a href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '" class="gremaza-card-link">';
@@ -279,14 +306,17 @@ class GremazaImageCardCarouselItem {
         }
         $output .= '</div>';
 
-        $output .= '<div class="gremaza-card-content">';
-        if (!empty($atts['title'])) {
-            $output .= '<h3 class="gremaza-card-title">' . esc_html($atts['title']) . '</h3>';
+        // Only show content for card style
+        if ($carousel_style === 'card') {
+            $output .= '<div class="gremaza-card-content">';
+            if (!empty($atts['title'])) {
+                $output .= '<h3 class="gremaza-card-title">' . esc_html($atts['title']) . '</h3>';
+            }
+            if (!empty($atts['description'])) {
+                $output .= '<p class="gremaza-card-description">' . esc_html($atts['description']) . '</p>';
+            }
+            $output .= '</div>';
         }
-        if (!empty($atts['description'])) {
-            $output .= '<p class="gremaza-card-description">' . esc_html($atts['description']) . '</p>';
-        }
-        $output .= '</div>';
 
         if (!empty($link_url)) {
             $output .= '</a>';

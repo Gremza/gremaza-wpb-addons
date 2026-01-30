@@ -3,7 +3,7 @@
  * Plugin Name: Gremaza WPB Addons
  * Plugin URI: https://github.com/marselpreci/gremaza-wpb-addons
  * Description: Additional elements for WPBakery Page Builder with custom styles and functionality.
- * Version: 1.10.3
+ * Version: 1.10.6
  * Author: Marsel Preci
  * Author URI: https://marselpreci.com
  * License: GPL v2 or later
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 // Define plugin constants
 define('GREMAZA_WPB_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('GREMAZA_WPB_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('GREMAZA_WPB_PLUGIN_VERSION', '1.10.3');
+define('GREMAZA_WPB_PLUGIN_VERSION', '1.10.6');
 
 class GremazaWPBAddons {
 
